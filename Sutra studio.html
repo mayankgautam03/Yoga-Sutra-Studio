@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sutra Studios — Yoga · Therapy · Movement</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#8B6914;--gold-muted:rgba(201,168,76,0.15);--teal:#2A9D8F;--teal-light:#3DBDB0;--teal-muted:rgba(42,157,143,0.12);--rose:#C4786A;--rose-muted:rgba(196,120,106,0.12);--black:#080808;--dark:#0F0F0F;--dark2:#161616;--dark3:#1E1E1E;--dark4:#262626;--white:#FAF8F4;--cream:#F0EAD6;--gray:#777;--gray-light:rgba(250,248,244,0.5);--gray-faint:rgba(250,248,244,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;font-weight:300}
+.page{display:none}.page.active{display:block}
+body::before{content:"";position:fixed;inset:0;opacity:0.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 48px;height:78px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.12);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+nav.scrolled{height:64px;background:rgba(8,8,8,0.98)}
+.nav-logo{display:flex;align-items:center;gap:14px;cursor:pointer;text-decoration:none}
+.nav-logo img{height:46px;width:46px;object-fit:cover;border-radius:50%;border:1px solid rgba(201,168,76,0.3)}
+.nav-logo-text .t1{font-family:"Cinzel",serif;font-size:15px;letter-spacing:3px;color:var(--gold);line-height:1.2;display:block}
+.nav-logo-text .t2{font-size:8px;letter-spacing:5px;color:var(--teal);text-transform:uppercase;display:block;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links li a,.nav-links li button{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(250,248,244,0.75);background:none;border:none;cursor:pointer;padding:8px 14px;border-radius:3px;transition:color 0.3s;text-decoration:none;display:block}
+.nav-links li a:hover,.nav-links li button:hover{color:var(--gold)}
+.nav-links .dropdown{position:relative}
+.nav-links .dropdown>a{display:flex;align-items:center;gap:5px}
+.nav-links .dropdown-menu{display:none;position:absolute;top:100%;left:0;padding-top:10px}
+.nav-links .dropdown-menu-inner{background:var(--dark2);border:1px solid rgba(201,168,76,0.2);border-radius:8px;min-width:230px;box-shadow:0 20px 60px rgba(0,0,0,0.8);overflow:hidden}
+.nav-links .dropdown:hover .dropdown-menu{display:block}
+.nav-links .dropdown-menu a{display:flex;align-items:center;gap:12px;padding:14px 20px;font-size:11px;letter-spacing:1.5px;border-bottom:1px solid rgba(255,255,255,0.05);color:var(--gray-light);text-decoration:none;transition:background 0.2s,color 0.2s}
+.nav-links .dropdown-menu a:last-child{border-bottom:none}
+.nav-links .dropdown-menu a:hover{background:rgba(201,168,76,0.08);color:var(--gold)}
+.nav-links .dropdown-menu .dm-icon{font-size:14px}
+.nav-links .dropdown-menu .dm-label{font-size:10px;letter-spacing:2px;color:var(--teal);display:block;margin-top:2px}
+.btn-wa-nav{display:inline-flex!important;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E)!important;color:var(--black)!important;padding:10px 18px!important;border-radius:30px!important;font-weight:500!important;transition:transform 0.3s,box-shadow 0.3s!important}
+.btn-wa-nav:hover{transform:translateY(-2px)!important;box-shadow:0 8px 24px rgba(37,211,102,0.35)!important;color:var(--black)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:78px;left:0;right:0;background:rgba(8,8,8,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.12);padding:16px 20px 24px;z-index:999;flex-direction:column;gap:2px;max-height:calc(100vh - 78px);overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a,.mobile-menu button{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(250,248,244,0.7);background:none;border:none;cursor:pointer;padding:13px 14px;border-radius:4px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:color 0.2s;text-align:left}
+.mobile-menu a:hover,.mobile-menu button:hover{color:var(--gold)}
+.mobile-menu .mob-sub{padding-left:28px;font-size:10px;color:rgba(250,248,244,0.45)}
+.mobile-menu .mob-wa{margin-top:12px;background:linear-gradient(135deg,#25D366,#128C7E)!important;color:var(--black)!important;border-radius:30px;text-align:center!important;font-weight:500!important}
+
+/* SHARED */
+section{padding:100px 48px}.container{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--teal);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.section-eyebrow::before{content:"";width:24px;height:1px;background:var(--teal);opacity:0.6}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(34px,4.5vw,58px);font-weight:300;line-height:1.08;margin-bottom:22px}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-body{font-size:15px;line-height:1.9;color:var(--gray-light);max-width:520px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);font-family:"DM Sans",sans-serif;font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;text-decoration:none}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(201,168,76,0.35)}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;background:linear-gradient(135deg,#25D366,#128C7E);color:var(--black);font-family:"DM Sans",sans-serif;font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;text-decoration:none}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(37,211,102,0.3)}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:14px 34px;background:transparent;color:var(--white);font-family:"DM Sans",sans-serif;font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(250,248,244,0.25);border-radius:3px;cursor:pointer;transition:border-color 0.3s,color 0.3s;text-decoration:none}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.gold-line{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 36px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:var(--black)}
+.hero-bg-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(42,157,143,0.055) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 15% 80%,rgba(201,168,76,0.05) 0%,transparent 50%),radial-gradient(ellipse 40% 40% at 85% 20%,rgba(196,120,106,0.04) 0%,transparent 50%)}
+.hero-mandala{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:700px;height:700px;opacity:0.025;animation:slow-spin 80s linear infinite}
+@keyframes slow-spin{from{transform:translateY(-50%) rotate(0deg)}to{transform:translateY(-50%) rotate(360deg)}}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;background:var(--gold);opacity:0;animation:float-p linear infinite}
+@keyframes float-p{0%{transform:translateY(110vh);opacity:0}8%{opacity:0.5}92%{opacity:0.2}100%{transform:translateY(-40px) translateX(20px);opacity:0}}
+.hero-content{text-align:center;z-index:2;padding:110px 20px 70px;animation:heroIn 1.2s ease forwards}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{font-size:14px;letter-spacing:6px;text-transform:uppercase;color:var(--teal);margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:16px;animation:heroIn 1.2s 0.2s ease both}
+.hero-eyebrow::before,.hero-eyebrow::after{content:"";height:1px;width:44px;background:var(--teal);opacity:0.45}
+.hero-logo{margin:0 auto 36px;width:200px;height:200px;position:relative;animation:heroIn 1.2s 0.1s ease both}
+.hero-logo::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(201,168,76,0.2);animation:pulse-ring 3s ease-in-out infinite}
+.hero-logo::after{content:"";position:absolute;inset:-26px;border-radius:50%;border:1px solid rgba(201,168,76,0.1);animation:pulse-ring 3s 0.5s ease-in-out infinite}
+@keyframes pulse-ring{0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+.hero-logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 40px rgba(201,168,76,0.4))}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(36px,5.5vw,68px);font-weight:300;line-height:1.02;letter-spacing:-1px;margin-bottom:12px;animation:heroIn 1.2s 0.3s ease both}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-subtitle{font-family:"Cinzel",serif;font-size:clamp(9px,1.2vw,12px);letter-spacing:7px;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:14px;animation:heroIn 1.2s 0.4s ease both}
+.hero-tagline{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:30px;animation:heroIn 1.2s 0.45s ease both}
+.hero-desc{font-size:16px;line-height:1.85;color:var(--gray-light);max-width:500px;margin:0 auto 52px;animation:heroIn 1.2s 0.5s ease both}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:heroIn 1.2s 0.6s ease both}
+.hero-trust{margin-top:56px;display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;animation:heroIn 1.2s 0.7s ease both}
+.trust-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.trust-num{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:300;color:var(--gold)}
+.trust-label{font-size:9px;letter-spacing:2.5px;color:var(--gray);text-transform:uppercase}
+.trust-sep{width:1px;height:40px;background:rgba(255,255,255,0.08)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:8px;letter-spacing:3px;color:var(--gold);opacity:0.5}
+.hero-scroll::after{content:"";width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scroll-line 1.8s ease-in-out infinite}
+@keyframes scroll-line{0%,100%{opacity:0.3}50%{opacity:1}}
+
+/* PROBLEM */
+.problem-section{background:var(--dark);padding:90px 48px}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.problem-cards{display:flex;flex-direction:column;gap:16px}
+.problem-card{padding:24px 26px;border-left:2px solid transparent;background:var(--dark2);border-radius:4px;transition:border-color 0.3s,background 0.3s;cursor:default}
+.problem-card:hover{border-left-color:var(--gold);background:var(--dark3)}
+.problem-card .pc-icon{font-size:22px;margin-bottom:10px}
+.problem-card h4{font-family:"Cinzel",serif;font-size:11px;letter-spacing:2.5px;color:var(--white);margin-bottom:6px}
+.problem-card p{font-size:13px;color:var(--gray-light);line-height:1.7}
+
+/* DIFF */
+.diff-section{background:var(--black);padding:90px 48px}
+.diff-inner{max-width:1100px;margin:0 auto;text-align:center}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.diff-card{padding:50px 36px;position:relative;overflow:hidden;background:var(--dark2);transition:background 0.4s;cursor:default}
+.diff-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.4s}
+.diff-card:nth-child(2)::before{background:linear-gradient(to right,transparent,var(--teal),transparent)}
+.diff-card:nth-child(3)::before{background:linear-gradient(to right,transparent,var(--rose),transparent)}
+.diff-card:hover{background:var(--dark3)}.diff-card:hover::before{opacity:1}
+.diff-icon{font-size:44px;margin-bottom:22px;display:block}
+.diff-card h3{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:300;margin-bottom:14px}
+.diff-card h3 em{font-style:italic;color:var(--gold)}
+.diff-card:nth-child(2) h3 em{color:var(--teal)}.diff-card:nth-child(3) h3 em{color:var(--rose)}
+.diff-card p{font-size:14px;color:var(--gray-light);line-height:1.8}
+
+/* SERVICES — 7 cards, last one centered */
+.services-section{background:var(--dark);padding:100px 48px}
+.services-header{max-width:600px;margin-bottom:60px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.service-card{background:var(--dark2);position:relative;overflow:hidden;cursor:pointer;transition:background 0.3s}
+.service-card:hover{background:var(--dark3)}
+.service-card-inner{padding:32px 28px;height:100%;display:flex;flex-direction:column}
+.service-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.service-icon-wrap{width:48px;height:48px;border-radius:50%;background:var(--gold-muted);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;transition:background 0.3s,border-color 0.3s}
+.service-card:hover .service-icon-wrap{background:rgba(201,168,76,0.2);border-color:var(--gold)}
+.service-card h3{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:300;margin-bottom:12px}
+.service-card p{font-size:13px;color:var(--gray-light);line-height:1.75;flex:1;margin-bottom:24px}
+.service-link{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;transition:gap 0.3s;background:none;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;pointer-events:none}
+.service-card:hover .service-link{gap:14px}
+.service-badge{position:absolute;top:20px;right:20px;background:linear-gradient(135deg,var(--rose),#a85a4e);color:white;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:20px}
+.service-card.aerial .service-icon-wrap{background:var(--teal-muted);border-color:rgba(42,157,143,0.3)}
+.service-card.aerial .service-tag{color:var(--teal)}.service-card.aerial .service-link{color:var(--teal)}
+.service-card.aerial:hover .service-icon-wrap{background:rgba(42,157,143,0.2);border-color:var(--teal)}
+.service-card.therapy .service-icon-wrap{background:var(--rose-muted);border-color:rgba(196,120,106,0.3)}
+.service-card.therapy .service-tag{color:var(--rose)}.service-card.therapy .service-link{color:var(--rose)}
+.service-card.therapy:hover .service-icon-wrap{background:rgba(196,120,106,0.2);border-color:var(--rose)}
+
+/* ABOUT */
+.about-section{background:var(--black);padding:100px 48px}
+.about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:90px;align-items:start;max-width:1200px;margin:0 auto}
+.about-photo-wrap{position:relative;padding-bottom:36px;padding-right:28px}
+.about-photo{position:relative;aspect-ratio:3/4;max-height:580px;background:linear-gradient(160deg,var(--dark2),var(--dark3));border-radius:4px;overflow:hidden;border:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.55) 0%,transparent 50%)}
+.founder-tag{position:absolute;bottom:0;left:28px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);padding:12px 26px;border-radius:3px;font-family:"Cinzel",serif;font-size:12px;letter-spacing:3px;box-shadow:0 12px 36px rgba(0,0,0,0.6);white-space:nowrap;z-index:2}
+.about-badge{position:absolute;top:24px;right:0;width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#1a6b62);display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--black);box-shadow:0 8px 28px rgba(0,0,0,0.5);z-index:2}
+.about-badge .big{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;color:white}
+.about-badge .small{font-size:7px;letter-spacing:1px;color:rgba(255,255,255,0.8);text-align:center;line-height:1.4}
+.about-content{padding-top:12px}
+.founder-title{font-family:"Cormorant Garamond",serif;font-size:15px;font-style:italic;color:var(--teal);letter-spacing:1px;margin-bottom:6px}
+.about-bio{font-size:15px;line-height:1.9;color:var(--gray-light);margin-bottom:28px}
+.achievements{list-style:none;margin-bottom:36px}
+.achievements li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05);align-items:flex-start}
+.achievements li:last-child{border-bottom:none}
+.ach-icon-wrap{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:var(--gold-muted);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:16px}
+.ach-text h4{font-family:"Cinzel",serif;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:5px}
+.ach-text p{font-size:13px;color:rgba(250,248,244,0.5);line-height:1.65}
+.cert-tags{display:flex;flex-wrap:wrap;gap:8px}
+.cert-tag{padding:7px 16px;border:1px solid rgba(42,157,143,0.3);border-radius:30px;font-size:10px;color:var(--teal);letter-spacing:1.5px;background:var(--teal-muted)}
+
+/* STUDIOS */
+.studios-section{background:var(--dark);padding:100px 48px}
+.studios-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px}
+.studio-card{border:1px solid rgba(201,168,76,0.15);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform 0.35s cubic-bezier(0.4,0,0.2,1),border-color 0.35s,box-shadow 0.35s;background:var(--dark2);text-decoration:none;color:inherit}
+.studio-card:hover{transform:translateY(-8px);border-color:rgba(201,168,76,0.5);box-shadow:0 24px 64px rgba(0,0,0,0.5)}
+.studio-img{height:220px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden}
+.studio-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,var(--dark2) 100%)}
+.studio-body{padding:32px}
+.studio-loc{font-family:"Cinzel",serif;font-size:9px;letter-spacing:4px;color:var(--teal);margin-bottom:10px}
+.studio-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:300;margin-bottom:16px}
+.studio-name em{font-style:italic;color:var(--gold)}
+.studio-features{list-style:none;margin-bottom:26px}
+.studio-features li{font-size:13px;color:var(--gray-light);padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:10px}
+.studio-features li::before{content:"◆";color:var(--gold);font-size:5px;flex-shrink:0}
+.studio-explore{font-size:9px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:8px;transition:gap 0.3s;background:none;border:none;cursor:pointer;font-family:"DM Sans",sans-serif}
+.studio-card:hover .studio-explore{gap:14px}
+
+/* TESTIMONIALS */
+.testimonials-section{background:var(--black);padding:100px 48px}
+.testimonials-section .inner{max-width:860px;margin:0 auto;text-align:center}
+.testimonial-item{display:none;animation:fadeInUp 0.5s ease forwards}
+.testimonial-item.active{display:block}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.t-stars{color:var(--gold);font-size:16px;letter-spacing:4px;margin-bottom:28px}
+.t-quote{font-family:"Cormorant Garamond",serif;font-size:clamp(19px,2.5vw,28px);font-weight:300;font-style:italic;line-height:1.65;color:var(--white);margin-bottom:34px}
+.t-quote::before{content:"\201C";color:var(--gold);font-size:56px;line-height:0;vertical-align:-18px;margin-right:4px}
+.t-author{display:flex;flex-direction:column;align-items:center;gap:5px}
+.t-avatar{width:52px;height:52px;border-radius:50%;background:var(--dark3);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:4px}
+.t-name{font-family:"Cinzel",serif;font-size:11px;letter-spacing:2.5px;color:var(--gold)}
+.t-loc{font-size:11px;color:var(--gray)}
+.t-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:40px}
+.t-arrow{width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,168,76,0.25);background:var(--gold-muted);color:var(--gold);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s,background 0.3s}
+.t-arrow:hover{border-color:var(--gold);background:rgba(201,168,76,0.15)}
+.t-dots{display:flex;gap:8px}
+.t-dot{width:7px;height:7px;border-radius:50%;background:rgba(201,168,76,0.2);cursor:pointer;transition:all 0.3s}
+.t-dot.active{background:var(--gold);width:22px;border-radius:4px}
+.google-reviews-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;margin-top:28px;background:var(--dark2);border:1px solid rgba(255,255,255,0.12);border-radius:30px;color:var(--white);font-size:12px;letter-spacing:1.5px;text-decoration:none;transition:border-color 0.3s,background 0.3s,transform 0.3s}
+.google-reviews-btn:hover{border-color:#4285F4;background:rgba(66,133,244,0.08);transform:translateY(-2px)}
+
+/* GALLERY */
+.gallery-section{background:var(--dark);padding:100px 48px}
+.gallery-showcase{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,240px);gap:3px;margin-top:56px}
+.g-item{background:var(--dark3);position:relative;overflow:hidden;cursor:pointer}
+.g-item:first-child{grid-column:span 2;grid-row:span 2}.g-item:nth-child(4){grid-column:span 2}
+.g-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;transition:transform 0.6s ease;background-size:cover;background-position:center;overflow:hidden}
+.g-item:hover .g-bg{transform:scale(1.08)}
+.g-bg img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.g-item:hover .g-bg img{transform:scale(1.08)}
+.g-overlay{position:absolute;inset:0;background:rgba(8,8,8,0);display:flex;align-items:center;justify-content:center;transition:background 0.4s}
+.g-item:hover .g-overlay{background:rgba(8,8,8,0.5)}
+.g-label{font-family:"Cormorant Garamond",serif;font-size:18px;font-style:italic;color:var(--gold);opacity:0;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s}
+.g-item:hover .g-label{opacity:1;transform:translateY(0)}
+
+/* CAROUSEL */
+.gallery-carousel-wrap{margin-top:60px}
+.gallery-carousel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.gallery-carousel-header h3{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:300}
+.gallery-carousel-header h3 em{font-style:italic;color:var(--gold)}
+.carousel-controls{display:flex;align-items:center;gap:12px}
+.c-arrow{width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);background:var(--gold-muted);color:var(--gold);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;flex-shrink:0}
+.c-arrow:hover{border-color:var(--gold);background:rgba(201,168,76,0.2)}
+.carousel-track-outer{overflow:hidden;border-radius:8px;position:relative;padding:4px 0}
+.carousel-track{display:flex;gap:16px;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);padding:4px 2px}
+.carousel-slide{flex:0 0 calc(23%);min-width:180px;aspect-ratio:4/3;background:var(--dark3);border-radius:8px;overflow:hidden;position:relative;cursor:pointer;border:1px solid rgba(201,168,76,0.1);transition:transform 0.3s,border-color 0.3s}.carousel-slide:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.3)}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.carousel-slide:hover img{transform:scale(1.06)}
+.carousel-slide .slide-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;background:linear-gradient(135deg,var(--dark3),var(--dark4))}
+.carousel-slide .slide-placeholder .ph-icon{font-size:36px;opacity:0.4}
+.carousel-slide .slide-placeholder span{font-size:10px;color:var(--gray);letter-spacing:1px;text-align:center}
+
+
+/* CTA */
+.cta-section{background:var(--black);padding:100px 48px}
+.cta-inner{max-width:860px;margin:0 auto;text-align:center}
+.cta-card{border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:80px 60px;background:linear-gradient(160deg,rgba(201,168,76,0.03),rgba(42,157,143,0.03));position:relative;overflow:hidden;margin-top:50px}
+.cta-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),var(--teal),transparent)}
+.cta-card h2{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,4vw,50px);font-weight:300;margin-bottom:20px}
+.cta-card h2 em{font-style:italic;color:var(--gold)}
+.cta-card p{color:var(--gray-light);font-size:15px;line-height:1.85;margin-bottom:44px}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta-note{margin-top:22px;font-size:12px;color:var(--gray)}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(201,168,76,0.08);padding:72px 48px 32px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.footer-brand p{margin-top:18px;font-size:13px;color:rgba(250,248,244,0.38);line-height:1.8;max-width:240px}
+.footer-col h4{font-family:"Cinzel",serif;font-size:9px;letter-spacing:4px;color:var(--gold);margin-bottom:20px;text-transform:uppercase}
+.footer-col ul{list-style:none}
+.footer-col ul li{padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.footer-col ul li a{font-size:13px;color:rgba(250,248,244,0.42);text-decoration:none;transition:color 0.2s;cursor:pointer}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{max-width:1200px;margin:28px auto 0;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgba(250,248,244,0.22)}
+.social-links{display:flex;gap:12px;margin-top:22px}
+.social-link{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,168,76,0.18);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color 0.3s,background 0.3s}
+.social-link:hover{border-color:var(--gold);background:var(--gold-muted)}
+.social-link svg{width:18px;height:18px}
+
+/* SERVICE PAGES */
+.sp-hero{min-height:75vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+.sp-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.sp-hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.92) 0%,rgba(8,8,8,0.65) 50%,rgba(8,8,8,0.4) 100%)}
+.sp-hero-content{max-width:640px;position:relative;z-index:2}
+.sp-hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,6vw,74px);font-weight:300;line-height:1.05;margin-bottom:20px}
+.sp-hero h1 em{font-style:italic;color:var(--gold)}
+.sp-hero-lead{font-size:15px;line-height:1.9;color:var(--gray-light);max-width:480px;margin-bottom:34px}
+.sp-gallery{padding:80px 48px}
+.sp-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:40px}
+.sp-g-item{aspect-ratio:4/3;position:relative;overflow:hidden;cursor:pointer;background:var(--dark3);border-radius:2px}
+.sp-g-item .sp-g-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.5s ease;display:flex;align-items:center;justify-content:center}
+.sp-g-item:hover .sp-g-bg{transform:scale(1.08)}
+.sp-g-item .sp-g-overlay{position:absolute;inset:0;background:rgba(8,8,8,0);display:flex;align-items:flex-end;padding:16px;transition:background 0.4s}
+.sp-g-item:hover .sp-g-overlay{background:rgba(8,8,8,0.5)}
+.sp-g-item .sp-g-label{font-family:"Cormorant Garamond",serif;font-size:15px;font-style:italic;color:var(--gold);opacity:0;transform:translateY(6px);transition:opacity 0.4s,transform 0.4s}
+.sp-g-item:hover .sp-g-label{opacity:1;transform:translateY(0)}
+.sp-who{padding:80px 48px;background:var(--dark)}
+.sp-who-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto}
+.who-list{list-style:none;margin-top:24px}
+.who-list li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:14px;align-items:flex-start;font-size:14px;color:var(--gray-light)}
+.who-list li::before{content:"✓";color:var(--teal);font-size:13px;margin-top:1px;flex-shrink:0}
+.who-visual{aspect-ratio:1;background:var(--dark3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:130px;border:1px solid rgba(201,168,76,0.12)}
+.sp-offerings{padding:80px 48px;background:var(--black)}
+.offerings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:50px}
+.offering-card{padding:36px 30px;background:var(--dark2);border-bottom:2px solid transparent;transition:border-color 0.3s,background 0.3s}
+.offering-card:hover{border-bottom-color:var(--gold);background:var(--dark3)}
+.offering-card h4{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:300;margin-bottom:10px}
+.offering-card p{font-size:13px;color:var(--gray-light);line-height:1.75}
+.offering-card .o-tag{font-size:9px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:10px}
+.sp-process{padding:80px 48px;background:var(--dark)}
+.process-steps{display:flex;gap:0;margin-top:50px;flex-wrap:wrap}
+.process-step{flex:1;min-width:200px;padding:34px 28px;position:relative;border-right:1px solid rgba(255,255,255,0.06)}
+.process-step:last-child{border-right:none}
+.step-num{font-family:"Cormorant Garamond",serif;font-size:56px;font-weight:300;color:rgba(201,168,76,0.12);line-height:1;margin-bottom:16px}
+.process-step h4{font-family:"Cinzel",serif;font-size:10px;letter-spacing:2.5px;color:var(--gold);margin-bottom:10px}
+.process-step p{font-size:13px;color:var(--gray-light);line-height:1.7}
+.sp-benefits{padding:80px 48px;background:var(--black)}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:50px;max-width:900px}
+.benefit-card{padding:28px;border:1px solid rgba(255,255,255,0.06);border-radius:4px;background:var(--dark2);display:flex;gap:18px;align-items:flex-start;transition:border-color 0.3s}
+.benefit-card:hover{border-color:rgba(201,168,76,0.25)}
+.benefit-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.benefit-card h4{font-family:"Cinzel",serif;font-size:10px;letter-spacing:2px;color:var(--white);margin-bottom:6px}
+.benefit-card p{font-size:13px;color:var(--gray-light);line-height:1.65}
+.sp-book{padding:80px 48px;background:var(--dark);text-align:center}
+.sp-book h2{font-family:"Cormorant Garamond",serif;font-size:44px;font-weight:300;margin-bottom:16px}
+.sp-book h2 em{font-style:italic;color:var(--gold)}
+.sp-book p{color:var(--gray-light);margin-bottom:36px;font-size:15px}
+
+/* STUDIO PAGES */
+.std-hero{padding:120px 48px 80px;position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center}
+.std-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.std-hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.92) 0%,rgba(8,8,8,0.65) 50%,rgba(8,8,8,0.35) 100%)}
+.std-hero-content{max-width:640px;position:relative;z-index:2}
+.std-hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(42px,6vw,76px);font-weight:300;line-height:1.05;margin-bottom:18px}
+.std-hero h1 em{font-style:italic;color:var(--gold)}
+.std-hero p{font-size:15px;color:var(--gray-light);max-width:460px;line-height:1.85;margin-bottom:32px}
+.std-details{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:60px 48px;max-width:1200px;margin:0 auto}
+.std-detail-card{padding:30px;border:1px solid rgba(201,168,76,0.12);border-radius:4px;background:var(--dark2)}
+.std-detail-card .icon{font-size:26px;margin-bottom:14px}
+.std-detail-card h3{font-family:"Cinzel",serif;font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:10px;text-transform:uppercase}
+.std-detail-card p{font-size:13px;color:var(--gray-light);line-height:1.7}
+.std-amenities{padding:60px 48px;background:var(--dark)}
+.amenity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;max-width:1200px}
+.amenity-item{padding:24px 20px;text-align:center;border:1px solid rgba(201,168,76,0.08);border-radius:4px;transition:border-color 0.3s,background 0.3s}
+.amenity-item:hover{border-color:var(--teal);background:var(--teal-muted)}
+.amenity-item .icon{font-size:26px;margin-bottom:10px}
+.amenity-item span{font-size:12px;color:var(--gray-light);letter-spacing:0.5px}
+
+/* Instagram embed */
+.std-insta{padding:60px 48px;background:var(--black)}
+.insta-embed-card{max-width:540px;margin:36px auto 0;background:var(--dark2);border:1px solid rgba(201,168,76,0.12);border-radius:16px;overflow:hidden}
+.insta-card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.insta-card-header-left{display:flex;align-items:center;gap:12px}
+.insta-avatar-ring{width:44px;height:44px;border-radius:50%;padding:2px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);flex-shrink:0}
+.insta-avatar-inner{width:100%;height:100%;border-radius:50%;background:var(--dark3);display:flex;align-items:center;justify-content:center;font-size:18px;border:2px solid var(--dark2)}
+.insta-handle-name{font-size:13px;font-weight:500;color:var(--white);line-height:1.3}
+.insta-handle-sub{font-size:10px;color:var(--gray);margin-top:2px}
+.insta-follow-btn{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);background:none;border:1px solid rgba(42,157,143,0.3);border-radius:20px;padding:6px 14px;cursor:pointer;text-decoration:none;transition:background 0.3s,border-color 0.3s;white-space:nowrap}
+.insta-follow-btn:hover{background:var(--teal-muted);border-color:var(--teal)}
+.instagram-media{min-width:unset!important;width:100%!important;margin:0!important;border:none!important;border-radius:0!important;background:transparent!important}
+.insta-card-footer{padding:14px 20px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between}
+.insta-card-footer a{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color 0.3s}
+.insta-card-footer a:hover{color:var(--gold)}
+.insta-ig-logo{width:20px;height:20px}
+.std-book-bar{padding:70px 48px;text-align:center;background:var(--dark)}
+.std-book-bar h2{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:300;margin-bottom:14px}
+.std-book-bar h2 em{font-style:italic;color:var(--gold)}
+.std-book-bar p{color:var(--gray-light);margin-bottom:36px}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:5000;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 32px rgba(37,211,102,0.4);cursor:pointer;text-decoration:none;animation:wa-bounce 2.5s ease-in-out infinite;transition:transform 0.3s,box-shadow 0.3s}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,0.6);animation:none}
+@keyframes wa-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.wa-tooltip{position:absolute;right:70px;top:50%;transform:translateY(-50%);background:var(--dark2);border:1px solid rgba(201,168,76,0.2);color:var(--white);font-size:12px;letter-spacing:1px;padding:10px 16px;border-radius:6px;white-space:nowrap;opacity:0;transition:opacity 0.3s;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.wa-float:hover .wa-tooltip{opacity:1}
+.page-footer-nav{background:var(--dark);border-top:1px solid rgba(201,168,76,0.08);padding:24px 48px;text-align:center}
+.page-footer-nav button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-family:"DM Sans",sans-serif;transition:color 0.3s}
+.page-footer-nav button:hover{color:var(--gold-light)}
+
+/* ====== INSTRUCTORS PAGE — Vertical Interactive ====== */
+.instructors-page{background:var(--black);min-height:100vh}
+.instructors-hero-sect{padding:120px 48px 60px;text-align:center;background:var(--black);position:relative;overflow:hidden}
+.instructors-hero-sect::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,168,76,0.04),transparent)}
+.inst-list{max-width:1000px;margin:0 auto;padding:0 48px 100px;display:flex;flex-direction:column;gap:0}
+
+/* Each instructor — alternating layout */
+.inst-card{display:grid;grid-template-columns:420px 1fr;gap:0;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.05);transition:border-color 0.4s}
+.inst-card:hover{border-color:rgba(201,168,76,0.2)}
+.inst-card:nth-child(even){grid-template-columns:1fr 420px;direction:rtl}
+.inst-card:nth-child(even) .inst-body{direction:ltr}
+.inst-card:nth-child(even) .inst-photo-col{direction:ltr}
+.inst-photo-col{position:relative;overflow:hidden;background:var(--dark3);min-height:520px}
+.inst-photo-col img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 0.6s ease;display:block}
+.inst-card:hover .inst-photo-col img{transform:scale(1.04)}
+.inst-photo-placeholder{width:100%;height:100%;min-height:520px;display:flex;align-items:center;justify-content:center;font-size:140px;opacity:0.2}
+.inst-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(8,8,8,0.4) 100%)}
+.inst-card:nth-child(even) .inst-photo-overlay{background:linear-gradient(to left,transparent 60%,rgba(8,8,8,0.4) 100%)}
+/* Color accent bar per card */
+.inst-card:nth-child(1) .inst-photo-col::after{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--gold),transparent)}
+.inst-card:nth-child(2) .inst-photo-col::after{content:"";position:absolute;top:0;right:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--teal),transparent)}
+.inst-card:nth-child(3) .inst-photo-col::after{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,#8B7BC9,transparent)}
+.inst-card:nth-child(4) .inst-photo-col::after{content:"";position:absolute;top:0;right:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--rose),transparent)}
+.inst-body{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;background:var(--dark2);transition:background 0.3s}
+.inst-card:hover .inst-body{background:var(--dark3)}
+.inst-num{font-family:"Cormorant Garamond",serif;font-size:80px;font-weight:300;color:rgba(201,168,76,0.07);line-height:1;margin-bottom:-16px;display:block}
+.inst-role-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:20px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;width:fit-content}
+.inst-role-badge.gold{background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold)}
+.inst-role-badge.teal{background:rgba(42,157,143,0.12);border:1px solid rgba(42,157,143,0.3);color:var(--teal)}
+.inst-role-badge.purple{background:rgba(139,123,201,0.12);border:1px solid rgba(139,123,201,0.3);color:#8B7BC9}
+.inst-role-badge.rose{background:rgba(196,120,106,0.12);border:1px solid rgba(196,120,106,0.3);color:var(--rose)}
+.inst-name{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.1;margin-bottom:8px}
+.inst-name em{font-style:italic;color:var(--gold)}
+.inst-card:nth-child(2) .inst-name em{color:var(--teal)}
+.inst-card:nth-child(3) .inst-name em{color:#8B7BC9}
+.inst-card:nth-child(4) .inst-name em{color:var(--rose)}
+.inst-title-line{font-family:"Cormorant Garamond",serif;font-size:14px;font-style:italic;color:rgba(250,248,244,0.45);margin-bottom:20px}
+.inst-divider{width:36px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin-bottom:20px}
+.inst-card:nth-child(2) .inst-divider{background:linear-gradient(to right,var(--teal),transparent)}
+.inst-card:nth-child(3) .inst-divider{background:linear-gradient(to right,#8B7BC9,transparent)}
+.inst-card:nth-child(4) .inst-divider{background:linear-gradient(to right,var(--rose),transparent)}
+.inst-bio{font-size:14px;color:var(--gray-light);line-height:1.85;margin-bottom:24px}
+.inst-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
+.inst-tag{padding:5px 13px;border-radius:20px;font-size:9px;letter-spacing:1.5px;border:1px solid rgba(201,168,76,0.2);color:var(--gold);background:var(--gold-muted)}
+.inst-tag.t{color:var(--teal);border-color:rgba(42,157,143,0.25);background:var(--teal-muted)}
+.inst-tag.p{color:#8B7BC9;border-color:rgba(139,123,201,0.25);background:rgba(139,123,201,0.08)}
+.inst-tag.r{color:var(--rose);border-color:rgba(196,120,106,0.25);background:var(--rose-muted)}
+.inst-wa-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;background:linear-gradient(135deg,#25D366,#128C7E);color:var(--black);font-family:"DM Sans",sans-serif;font-size:9px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;text-decoration:none;width:fit-content}
+.inst-wa-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.3)}
+
+/* ====== SCHEDULE PAGE ====== */
+.schedule-page{background:var(--black);min-height:100vh}
+.schedule-hero{padding:120px 48px 60px;text-align:center;position:relative;overflow:hidden}
+.schedule-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(201,168,76,0.04),transparent)}
+.schedule-body{padding:0 48px 100px;max-width:1200px;margin:0 auto}
+.schedule-embed-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(201,168,76,0.15);background:var(--dark2);padding:4px;box-shadow:0 24px 64px rgba(0,0,0,0.4)}
+.schedule-embed-wrap iframe{display:block;border-radius:8px}
+.schedule-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:28px;justify-content:center}
+.cal-tag{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1.5px;color:var(--gray-light)}
+.cal-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.schedule-note{margin-top:40px;background:var(--dark2);border:1px solid rgba(201,168,76,0.1);border-radius:8px;padding:28px 32px;display:flex;align-items:flex-start;gap:16px}
+.schedule-note .icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.schedule-note p{font-size:13px;color:var(--gray-light);line-height:1.8}
+.schedule-note strong{color:var(--gold);font-weight:500}
+
+/* ====== STUDENT OF MONTH PAGE ====== */
+.sotm-page{background:var(--black);min-height:100vh}
+.sotm-hero-sect{padding:120px 48px 60px;text-align:center;position:relative;overflow:hidden}
+.sotm-hero-sect::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(201,168,76,0.05),transparent)}
+.sotm-main{padding:0 48px 80px;max-width:1100px;margin:0 auto}
+.sotm-feature{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.sotm-slide-card{border-radius:16px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);background:var(--dark2);box-shadow:0 32px 80px rgba(0,0,0,0.5);position:relative}
+.sotm-slide-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.sotm-slide-header{padding:16px 22px;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:space-between}
+.sotm-slide-header-left{display:flex;align-items:center;gap:10px}
+.sotm-trophy{font-size:22px}
+.sotm-slide-title{font-family:"Cinzel",serif;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.sotm-month-badge{font-family:"Cinzel",serif;font-size:8px;letter-spacing:2px;color:rgba(201,168,76,0.6);background:rgba(201,168,76,0.08);padding:4px 10px;border-radius:20px;border:1px solid rgba(201,168,76,0.15)}
+.sotm-slide-card iframe{display:block;width:100%;border:none}
+.sotm-slide-footer{padding:14px 22px;border-top:1px solid rgba(201,168,76,0.08);font-size:11px;color:var(--gray);display:flex;align-items:center;gap:8px}
+.sotm-info-panel{display:flex;flex-direction:column;gap:0}
+.sotm-eyebrow-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:30px;padding:8px 18px;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:24px;width:fit-content}
+.sotm-info-panel h2{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,4vw,46px);font-weight:300;line-height:1.1;margin-bottom:16px}
+.sotm-info-panel h2 em{font-style:italic;color:var(--gold)}
+.sotm-info-panel p{font-size:14px;color:var(--gray-light);line-height:1.85;margin-bottom:24px}
+/* How-to guide */
+.sotm-guide{background:var(--dark2);border:1px solid rgba(42,157,143,0.15);border-radius:12px;padding:28px 30px;margin-top:8px}
+.sotm-guide-title{font-family:"Cinzel",serif;font-size:9px;letter-spacing:3px;color:var(--teal);margin-bottom:16px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.sotm-steps{display:flex;flex-direction:column;gap:14px}
+.sotm-step{display:flex;gap:14px;align-items:flex-start}
+.sotm-step-num{width:28px;height:28px;border-radius:50%;background:var(--teal-muted);border:1px solid rgba(42,157,143,0.3);display:flex;align-items:center;justify-content:center;font-family:"Cinzel",serif;font-size:10px;color:var(--teal);flex-shrink:0;margin-top:1px}
+.sotm-step p{font-size:13px;color:var(--gray-light);line-height:1.65}
+.sotm-step strong{color:var(--white)}
+/* Nominees section */
+.sotm-nominees{margin-top:72px}
+.sotm-nominees-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.nominee-card{padding:28px 24px;background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:8px;text-align:center;transition:border-color 0.3s,transform 0.3s}
+.nominee-card:hover{border-color:rgba(201,168,76,0.25);transform:translateY(-4px)}
+.nominee-emoji{font-size:40px;margin-bottom:12px;display:block}
+.nominee-card h4{font-family:"Cinzel",serif;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:8px}
+.nominee-card p{font-size:12px;color:var(--gray-light);line-height:1.65}
+
+/* MEDITATION PAGE */
+.svc-meditation-hero{background:linear-gradient(135deg,#080d1a 0%,#0d1428 40%,#080d20 70%,#060810 100%)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:60px}
+  .sp-who-grid{grid-template-columns:1fr}
+  .who-visual{max-width:220px}
+  .carousel-slide{flex:0 0 calc(30%)}
+  .inst-card,.inst-card:nth-child(even){grid-template-columns:1fr;direction:ltr}
+  .inst-card:nth-child(even){direction:ltr}
+  .inst-photo-col{min-height:340px}
+  .inst-photo-placeholder{min-height:340px}
+  .inst-body{padding:40px 36px}
+  .sotm-feature{grid-template-columns:1fr}
+  .sotm-nominees-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links{display:none!important}
+  .hamburger{display:flex}
+  section,.sp-hero,.sp-who,.sp-offerings,.sp-process,.sp-benefits,.sp-book,.std-hero,.std-amenities,.std-insta,.std-book-bar,.problem-section,.diff-section,.services-section,.about-section,.studios-section,.testimonials-section,.gallery-section,.cta-section,footer,.sp-gallery,.instructors-hero-sect,.inst-list,.schedule-body,.sotm-main,.schedule-hero,.sotm-hero-sect{padding-left:20px;padding-right:20px}
+  .problem-grid{grid-template-columns:1fr;gap:40px}
+  .diff-grid{grid-template-columns:1fr;gap:2px}
+  .services-grid{grid-template-columns:1fr 1fr;gap:2px}
+  .services-grid .service-card:last-child:nth-child(3n+1){grid-column:auto}
+  .studios-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .gallery-showcase{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .g-item{aspect-ratio:1}.g-item:first-child{grid-column:span 2}.g-item:nth-child(4){grid-column:span 1}
+  .std-details{grid-template-columns:1fr;padding:36px 20px}
+  .amenity-grid{grid-template-columns:1fr 1fr}
+  .offerings-grid{grid-template-columns:1fr}
+  .process-steps{flex-direction:column}
+  .process-step{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .benefits-grid{grid-template-columns:1fr}
+  .cta-card{padding:40px 24px}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+  .carousel-slide{flex:0 0 calc(46%)}
+  .sp-gallery-grid{grid-template-columns:1fr 1fr}
+  .inst-card,.inst-card:nth-child(even){grid-template-columns:1fr;direction:ltr}
+  .sotm-nominees-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .services-grid{grid-template-columns:1fr}
+  .hero h1{font-size:36px}
+  .hero-cta{flex-direction:column;align-items:center}
+  .btn-primary,.btn-wa,.btn-outline{width:100%;justify-content:center}
+  .hero-trust{gap:20px}.trust-sep{display:none}
+  .carousel-slide{flex:0 0 90%}
+  .sp-gallery-grid{grid-template-columns:1fr}
+  .inst-body{padding:28px 20px}
+}
+</style>
+</head>
+<body>
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-logo" onclick="showPage('home')">
+    <img src="Sutra studio logo.png" alt="Sutra Studios">
+    <div class="nav-logo-text"><span class="t1">Sutra Studios</span><span class="t2">Yoga · Therapy · Movement</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="navTo('about')">About</a></li>
+    <li class="dropdown">
+      <a>Services ▾</a>
+      <div class="dropdown-menu"><div class="dropdown-menu-inner">
+        <a onclick="showPage('svc-yoga')"><span class="dm-icon">🧘</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Yoga & Wellness</span><span class="dm-label">Hatha · Aerial Contemporary Dance · Ashtanga</span></span></a>
+        <a onclick="showPage('svc-meditation')"><span class="dm-icon">🕉️</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Meditation</span><span class="dm-label">Mindfulness · Breathwork · Nidra</span></span></a>
+        <a onclick="showPage('svc-aerial')"><span class="dm-icon">🪁</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Aerial Yoga</span><span class="dm-label">Unique · Rare in Faridabad</span></span></a>
+        <a onclick="showPage('svc-therapy')"><span class="dm-icon">💚</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Therapeutic Yoga</span><span class="dm-label">PCOS · Back Pain · Anxiety</span></span></a>
+        <a onclick="showPage('svc-movement')"><span class="dm-icon">🎭</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Creative Movement</span><span class="dm-label">Dance Therapy · Expression</span></span></a>
+        <a onclick="showPage('svc-workshops')"><span class="dm-icon">✨</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Workshops</span><span class="dm-label">Corporate · Stress Relief</span></span></a>
+        <a onclick="showPage('svc-online')"><span class="dm-icon">💻</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Online / Hybrid</span><span class="dm-label">Practice from anywhere</span></span></a>
+      </div></div>
+    </li>
+    <li class="dropdown">
+      <a>Studios ▾</a>
+      <div class="dropdown-menu"><div class="dropdown-menu-inner">
+        <a onclick="showPage('sector17')"><span class="dm-icon">🏛️</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Yoga Sutra Studio</span><span class="dm-label">Sector 17, Faridabad</span></span></a>
+        <a onclick="showPage('sector21')"><span class="dm-icon">🌸</span><span><span style="display:block;color:var(--white);font-size:11px;letter-spacing:1.5px">Yoga Sutra Studio</span><span class="dm-label">Sector 21A, Faridabad</span></span></a>
+      </div></div>
+    </li>
+    <li><a onclick="showPage('instructors')">Instructors</a></li>
+    <li><a onclick="showPage('schedule')">Schedule</a></li>
+    <li><a onclick="showPage('sotm')">⭐ Star Student</a></li>
+    <li><a onclick="navTo('testimonials')">Reviews</a></li>
+    <li><a class="btn-wa-nav" href="https://wa.me/919891525854?text=Hi%2C%20I%20want%20to%20book%20a%20free%20trial%20class%20at%20Sutra%20Studios%21" target="_blank">💬 Book Free Class</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="navTo('about');closeMobileMenu()">About</a>
+  <a onclick="showPage('svc-yoga');closeMobileMenu()" class="mob-sub">🧘 Yoga & Wellness</a>
+  <a onclick="showPage('svc-meditation');closeMobileMenu()" class="mob-sub">🕉️ Meditation</a>
+  <a onclick="showPage('svc-aerial');closeMobileMenu()" class="mob-sub">🪁 Aerial Yoga</a>
+  <a onclick="showPage('svc-therapy');closeMobileMenu()" class="mob-sub">💚 Therapeutic Yoga</a>
+  <a onclick="showPage('svc-movement');closeMobileMenu()" class="mob-sub">🎭 Creative Movement</a>
+  <a onclick="showPage('svc-workshops');closeMobileMenu()" class="mob-sub">✨ Workshops</a>
+  <a onclick="showPage('svc-online');closeMobileMenu()" class="mob-sub">💻 Online / Hybrid</a>
+  <a onclick="showPage('sector17');closeMobileMenu()">🏛️ Yoga Sutra Studio</a>
+  <a onclick="showPage('sector21');closeMobileMenu()">🌸 Yoga Sutra Studio</a>
+  <a onclick="showPage('instructors');closeMobileMenu()">👩‍🏫 Instructors</a>
+  <a onclick="showPage('schedule');closeMobileMenu()">📅 Schedule</a>
+  <a onclick="showPage('sotm');closeMobileMenu()">⭐ Star Student</a>
+  <a onclick="navTo('testimonials');closeMobileMenu()">Reviews</a>
+  <a class="mob-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%20want%20to%20book%20a%20free%20trial%20class!" target="_blank">💬 WhatsApp Us — Book Free Class</a>
+</div>
+
+<!-- ══════════ HOME PAGE ══════════ -->
+<div id="page-home" class="page active">
+<section class="hero">
+  <div class="hero-bg-mesh"></div>
+  <svg class="hero-mandala" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="400" cy="400" r="390" stroke="#C9A84C" stroke-width="0.5"/><circle cx="400" cy="400" r="320" stroke="#C9A84C" stroke-width="0.5"/><circle cx="400" cy="400" r="250" stroke="#C9A84C" stroke-width="0.5"/><circle cx="400" cy="400" r="180" stroke="#C9A84C" stroke-width="0.5"/><circle cx="400" cy="400" r="110" stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="10" y1="400" x2="790" y2="400" stroke="#C9A84C" stroke-width="0.4"/><line x1="400" y1="10" x2="400" y2="790" stroke="#C9A84C" stroke-width="0.4"/><line x1="122" y1="122" x2="678" y2="678" stroke="#C9A84C" stroke-width="0.4"/><line x1="678" y1="122" x2="122" y2="678" stroke="#C9A84C" stroke-width="0.4"/>
+    <polygon points="400,40 740,600 60,600" stroke="#C9A84C" stroke-width="0.5" fill="none"/><polygon points="400,760 60,200 740,200" stroke="#C9A84C" stroke-width="0.5" fill="none"/>
+  </svg>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Yoga · Therapy · Artistic Movement</div>
+    <div class="hero-logo"><img src="Sutra studio logo.png" alt="Sutra Studios"></div>
+    <h1>Connect <em>with your</em><br>Inner Self</h1>
+    <p class="hero-subtitle">Sutra Studios — Faridabad</p>
+    <p class="hero-tagline">Wellness · Therapy · Artistic Expression</p>
+    <p class="hero-desc">A sanctuary where ancient yoga wisdom, therapeutic healing, and creative movement converge. Transforming bodies, minds, and spirits for over 20 years.</p>
+    <div class="hero-cta">
+      <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%20want%20to%20book%20a%20free%20trial%20class%20at%20Sutra%20Studios!" target="_blank">💬 WhatsApp to Book Free Class</a>
+      <button class="btn-outline" onclick="navTo('services')">Explore Services</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-num">1200+</span><span class="trust-label">Students Transformed</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span class="trust-num">20+</span><span class="trust-label">Years of Excellence</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span class="trust-num">6</span><span class="trust-label">Specialities</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span class="trust-num">2</span><span class="trust-label">Premium Studios</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">DISCOVER</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section" id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-text">
+        <div class="section-eyebrow">You Are Not Alone</div>
+        <h2 class="section-title">We See Your<br><em>Struggle</em></h2>
+        <p class="section-body" style="margin-bottom:28px">Modern life leaves too many of us carrying more than we should — in our bodies, our minds, and our hearts. Sutra Studios exists to help you set it down.</p>
+        <p class="section-body">Whether it's chronic pain, hormonal imbalance, anxiety, or simply the need to find stillness — we have a practice designed for exactly where you are right now.</p>
+        <div style="margin-top:36px"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%20need%20help%20finding%20the%20right%20class%20for%20me." target="_blank" style="font-size:10px;padding:14px 28px">💬 Find My Practice</a></div>
+      </div>
+      <div class="problem-cards">
+        <div class="problem-card"><div class="pc-icon">🦴</div><h4>Chronic Pain & Stiffness</h4><p>Back pain, joint issues, postural problems from desk work — our therapeutic yoga addresses the root cause, not just the symptom.</p></div>
+        <div class="problem-card"><div class="pc-icon">🌊</div><h4>Stress, Anxiety & Burnout</h4><p>Racing mind, emotional exhaustion, broken sleep — yoga and breathwork are clinically proven tools for nervous system regulation.</p></div>
+        <div class="problem-card"><div class="pc-icon">🌸</div><h4>Hormonal Imbalance (PCOS)</h4><p>Specific yoga sequences can significantly reduce PCOS symptoms, regulate cycles, and restore hormonal harmony naturally.</p></div>
+        <div class="problem-card"><div class="pc-icon">✨</div><h4>Disconnection & Creative Block</h4><p>Feeling lost in routine? Our creative movement and dance therapy reconnect you to your body's innate wisdom and joy.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFF -->
+<section class="diff-section" id="difference">
+  <div class="diff-inner">
+    <div class="section-eyebrow" style="justify-content:center">Why Sutra Studios</div>
+    <h2 class="section-title" style="text-align:center">Three Pillars of<br><em>Transformation</em></h2>
+    <p class="section-body" style="margin:0 auto 16px;text-align:center">We sit at the intersection of three disciplines — and that's what makes us truly different.</p>
+    <div class="diff-grid">
+      <div class="diff-card"><span class="diff-icon">🧘</span><h3><em>Yoga</em> & Wellness</h3><p>Deep roots in traditional Hatha, Ashtanga, Aerial Contemporary Dance, and Pranayama — not fitness yoga, but authentic practice that transforms from the inside out.</p></div>
+      <div class="diff-card"><span class="diff-icon">💚</span><h3><em>Therapeutic</em> Healing</h3><p>Yoga specifically designed for health conditions — PCOS, chronic back pain, anxiety disorders, prenatal care. Evidence-informed, compassionate.</p></div>
+      <div class="diff-card"><span class="diff-icon">🎭</span><h3><em>Artistic</em> Expression</h3><p>Creative Movement and Dance Therapy as pathways to emotional release, self-discovery, and joy. Your body is a vehicle for meaning and beauty.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — 7 cards, last one auto-centered -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Services for Every<br><em>Journey</em></h2>
+      <p class="section-body">From age 12 to 80. Complete beginners to advanced practitioners. In-studio or online. There is a practice here for every body.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" onclick="showPage('svc-yoga')"><div class="service-card-inner"><div class="service-tag">Foundation</div><div class="service-icon-wrap">🧘</div><h3>Yoga & Wellness</h3><p>Hatha, Aerial Contemporary Dance, Ashtanga, Yin, Prenatal & Power Yoga. Classical practices taught with precision, warmth, and authenticity.</p><button class="service-link">Explore Classes →</button></div></div>
+      <div class="service-card" onclick="showPage('svc-meditation')"><div class="service-card-inner"><div class="service-tag" style="color:#8B7BC9">Mindfulness</div><div class="service-icon-wrap" style="background:rgba(139,123,201,0.12);border-color:rgba(139,123,201,0.25)">🕉️</div><h3>Meditation</h3><p>Guided meditation, pranayama, yoga nidra and mindfulness practices. Calm the mind, restore clarity, and access deep inner peace.</p><button class="service-link" style="color:#8B7BC9">Explore Meditation →</button></div></div>
+      <div class="service-card aerial" onclick="showPage('svc-aerial')"><div class="service-badge">Rare · Unique</div><div class="service-card-inner"><div class="service-tag">Signature</div><div class="service-icon-wrap" style="font-size:22px">🪁</div><h3>Aerial Yoga</h3><p>Experience yoga suspended in silk hammocks. Decompress the spine, deepen flexibility, build core strength — unlike anything you've tried.</p><button class="service-link" style="color:var(--teal)">Explore Aerial →</button></div></div>
+      <div class="service-card therapy" onclick="showPage('svc-therapy')"><div class="service-card-inner"><div class="service-tag">Therapeutic</div><div class="service-icon-wrap" style="font-size:22px">💚</div><h3>Therapeutic Yoga</h3><p>Targeted yoga therapy for PCOS, chronic back pain, anxiety, postural correction, and recovery. Personalised and evidence-informed.</p><button class="service-link" style="color:var(--rose)">Explore Therapy →</button></div></div>
+      <div class="service-card" onclick="showPage('svc-movement')"><div class="service-card-inner"><div class="service-tag">Creative</div><div class="service-icon-wrap">🎭</div><h3>Creative Movement & Dance</h3><p>Dance therapy, somatic movement, and expressive arts. Rediscover joy and reconnect with the wisdom your body already holds.</p><button class="service-link">Explore Movement →</button></div></div>
+      <div class="service-card" onclick="showPage('svc-workshops')"><div class="service-card-inner"><div class="service-tag">Events</div><div class="service-icon-wrap">✨</div><h3>Workshops & Retreats</h3><p>Corporate wellness, emotional release workshops, stress relief intensives, and seasonal retreats for groups and organisations.</p><button class="service-link">View Workshops →</button></div></div>
+      <div class="service-card aerial" onclick="showPage('svc-online')"><div class="service-card-inner"><div class="service-tag">Flexible</div><div class="service-icon-wrap" style="font-size:22px">💻</div><h3>Online & Hybrid Classes</h3><p>Live-streamed and recorded classes so your practice never stops — whether travelling, at home, or anywhere in the world.</p><button class="service-link" style="color:var(--teal)">Explore Online →</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <img src="Himani.webp" alt="Himani — Founder of Sutra Studios">
+          <div class="about-photo-overlay"></div>
+        </div>
+        <div class="founder-tag">Himani — Founder</div>
+        <div class="about-badge"><span class="big">20+</span><span class="small">Years of<br>Excellence</span></div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-eyebrow">Meet the Founder</div>
+      <h2 class="section-title">Master Instructor<br><em>Himani</em></h2>
+      <div class="founder-title">RYT-500 · Yoga Therapist · Wellness Coach</div>
+      <p class="about-bio">With over 20 years of dedicated practice and teaching, Himani is one of India's most respected yoga instructors. Her journey began in the foothills of the Himalayas, where she trained under masters of traditional Hatha and Ashtanga yoga.</p>
+      <p class="about-bio" style="margin-bottom:32px">Today, she combines ancient wisdom with modern therapeutic approaches to create transformative experiences for every student — from children to senior citizens, beginners to advanced practitioners.</p>
+      <ul class="achievements">
+        <li><div class="ach-icon-wrap">🪖</div><div class="ach-text"><h4>Indian Army Yoga Workshop</h4><p>Specialised yoga and mindfulness workshop for Indian Army personnel — stress resilience and physical rehabilitation.</p></div></li>
+        <li><div class="ach-icon-wrap">🏆</div><div class="ach-text"><h4>International Yoga Day — Featured Instructor</h4><p>Led a session for 500+ participants at India's National International Yoga Day celebrations.</p></div></li>
+        <li><div class="ach-icon-wrap">📜</div><div class="ach-text"><h4>RYT-500 Yoga Alliance Certified</h4><p>Highest internationally recognised yoga teaching certification, with specialisations in Prenatal Yoga, Yoga Therapy, and Anti Ageing.</p></div></li>
+        <li><div class="ach-icon-wrap">🎓</div><div class="ach-text"><h4>Corporate Wellness Programmes</h4><p>Designed and delivered wellness programmes for leading corporations, reducing burnout and boosting productivity.</p></div></li>
+      </ul>
+      <div class="cert-tags">
+        <span class="cert-tag">RYT-500</span><span class="cert-tag">Prenatal</span><span class="cert-tag">Yoga Therapy</span><span class="cert-tag">Aerial Yoga</span><span class="cert-tag">Dance Therapy</span><span class="cert-tag">Corporate Wellness</span><span class="cert-tag">Kids Yoga</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIOS -->
+<section class="studios-section" id="studios">
+  <div class="container">
+    <div class="section-eyebrow">Our Locations</div>
+    <h2 class="section-title">Two <em>Sacred</em> Spaces</h2>
+    <p class="section-body">Each studio thoughtfully designed — a sanctuary to leave the world behind and step fully into your practice.</p>
+    <div class="studios-grid">
+      <div class="studio-card" onclick="showPage('sector17')">
+        <div class="studio-img" style="background:linear-gradient(135deg,#0d1f1d,#1a3a36)">🏛️</div>
+        <div class="studio-body"><div class="studio-loc">📍 Sector 17, Faridabad</div><h3 class="studio-name"><em>Yoga</em> Sutra Studio</h3><ul class="studio-features"><li>2,000 sq ft premium yoga space</li><li>State-of-the-art sound system</li><li>Changing rooms & showers</li><li>Rooftop meditation terrace</li><li>Organic juice bar on-site</li></ul><button class="studio-explore">Explore Studio →</button></div>
+      </div>
+      <div class="studio-card" onclick="showPage('sector21')">
+        <div class="studio-img" style="background:linear-gradient(135deg,#1d0d1f,#361a3a)">🌸</div>
+        <div class="studio-body"><div class="studio-loc">📍 Sector 21A, Faridabad</div><h3 class="studio-name"><em>Yoga Sutra</em> Studio</h3><ul class="studio-features"><li>Outdoor garden yoga deck</li><li>Himalayan salt therapy room</li><li>Private session pods</li><li>Infrared sauna</li><li>Herbal tea lounge</li></ul><button class="studio-explore">Explore Studio →</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="inner">
+    <div class="section-eyebrow" style="justify-content:center">Our Community</div>
+    <h2 class="section-title" style="text-align:center">Stories of <em>Transformation</em></h2>
+    <div class="gold-line" style="margin:28px auto 50px"></div>
+    <div class="testimonial-item active"><div class="t-stars">★★★★★</div><div class="t-quote">Sutra Studios completely changed my relationship with my body. I walked in a stressed corporate employee and walked out feeling like I had found a part of myself I never knew existed.</div><div class="t-author"><div class="t-avatar">🌸</div><div class="t-name">Priya Sharma</div><div class="t-loc">Marketing Manager · Sector 17 Member</div></div></div>
+    <div class="testimonial-item"><div class="t-stars">★★★★★</div><div class="t-quote">The therapeutic yoga sessions for my PCOS have been life-changing. Within 3 months my cycles regulated and the pain reduced dramatically. This isn't just yoga — it's medicine.</div><div class="t-author"><div class="t-avatar">💚</div><div class="t-name">Ritika Jain</div><div class="t-loc">Teacher · Therapeutic Yoga Programme</div></div></div>
+    <div class="testimonial-item"><div class="t-stars">★★★★★</div><div class="t-quote">Aerial Yoga at Sutra is the most fun I've had exercising — ever. It's challenging, joyful, and my back pain has completely disappeared. Himani is extraordinarily gifted.</div><div class="t-author"><div class="t-avatar">🪁</div><div class="t-name">Arjun Mehta</div><div class="t-loc">Software Engineer · Aerial Yoga Member</div></div></div>
+    <div class="testimonial-item"><div class="t-stars">★★★★★</div><div class="t-quote">Prenatal yoga at Sutra Studios was the most beautiful experience of my pregnancy. I felt so supported and prepared. Himani is knowledgeable, caring, and incredibly kind.</div><div class="t-author"><div class="t-avatar">🌺</div><div class="t-name">Ananya Kapoor</div><div class="t-loc">New Mom · Sector 21A Member</div></div></div>
+    <div class="testimonial-item"><div class="t-stars">★★★★★</div><div class="t-quote">The creative movement workshop unlocked something in me I'd kept shut for years. I laughed, I cried, I danced — and I left feeling more myself than I had in a decade.</div><div class="t-author"><div class="t-avatar">🎭</div><div class="t-name">Neha Agarwal</div><div class="t-loc">Homemaker · Movement & Dance Member</div></div></div>
+    <div class="t-nav">
+      <button class="t-arrow" onclick="prevT()">&#8592;</button>
+      <div class="t-dots" id="tDots"></div>
+      <button class="t-arrow" onclick="nextT()">&#8594;</button>
+    </div>
+    <div style="text-align:center">
+      <a class="google-reviews-btn" href="https://www.google.com/search?sca_esv=c084c40794af8967&q=sutra+studio+faridabad&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOW3UVop2uGyv-afuE0Nl8KNrYQqotFGhgJ88_v-2KPx8-uK5By4BQATETZvU1XA2xCyPSfb86BB4GhS1gQQ_EV1GQcfsRQYfEGv1vmG1IUwXG4-7YcaDP61hqN4NPYlfff50HYQ%3D&sa=X&ved=2ahUKEwidhpPAsKSUAxUdyjgGHUL9Av8QrrQLegQIIhAA#" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;flex-shrink:0"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span style="color:#FBBC04;font-size:14px">★★★★★</span>
+        <span>Read All Google Reviews</span>
+        <span style="color:var(--gray);font-size:11px">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-eyebrow">Our World</div>
+    <h2 class="section-title">Life at <em>Sutra</em></h2>
+    <div class="gallery-showcase">
+      <div class="g-item"><div class="g-bg"><img src="morning bliss.webp" alt="Morning Flow" style="width:100%;height:100%;object-fit:cover"></div><div class="g-overlay"><div class="g-label">Morning Flow</div></div></div>
+      <div class="g-item"><div class="g-bg"><img src="aerial yoga.webp" alt="Aerial Yoga" style="width:100%;height:100%;object-fit:cover"></div><div class="g-overlay"><div class="g-label">Aerial Yoga</div></div></div>
+      <div class="g-item"><div class="g-bg"><img src="therapy.webp" alt="Therapy" style="width:100%;height:100%;object-fit:cover"></div><div class="g-overlay"><div class="g-label">Therapy Session</div></div></div>
+      <div class="g-item"><div class="g-bg"><img src="long.webp" alt="Posture" style="width:100%;height:100%;object-fit:cover"></div><div class="g-overlay"><div class="g-label">Dance Movement</div></div></div>
+      <div class="g-item"><div class="g-bg"><img src="morning bliss.webp" alt="Workshop" style="width:100%;height:100%;object-fit:cover"></div><div class="g-overlay"><div class="g-label">Evening Workshop</div></div></div>
+    </div>
+    <div class="gallery-carousel-wrap">
+      <div class="gallery-carousel-header">
+        <h3>Your <em>Moments</em> with Us</h3>
+        <div class="carousel-controls">
+          <button class="c-arrow" id="carouselPrev">&#8592;</button>
+          <button class="c-arrow" id="carouselNext">&#8594;</button>
+        </div>
+      </div>
+      <div class="carousel-track-outer"><div class="carousel-track" id="carouselTrack"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-eyebrow" style="justify-content:center">Start Today</div>
+    <h2 class="section-title" style="text-align:center">Your First Class<br>is <em>Free</em></h2>
+    <div class="cta-card">
+      <h2>Ready to <em>Begin</em>?</h2>
+      <p>No experience needed. No judgement. Just you, your breath, and the beginning of something beautiful. Message us on WhatsApp — we'll match you to the perfect class and studio.</p>
+      <div class="cta-actions">
+        <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%20want%20to%20book%20my%20free%20trial%20class%20at%20Sutra%20Studios!" target="_blank">💬 WhatsApp — Book Free Session</a>
+        <button class="btn-outline" onclick="showPage('sector17')">📍 Sector 17 Studio</button>
+        <button class="btn-outline" onclick="showPage('sector21')">📍 Sector 21A Studio</button>
+      </div>
+      <p class="cta-note">🎁 Your first class is 100% free · No commitment · We respond within 1 hour on WhatsApp</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="cursor:default"><img src="Sutra studio logo.png" alt="" style="height:42px;width:42px;border-radius:50%;border:1px solid rgba(201,168,76,0.3)"><div class="nav-logo-text"><span class="t1" style="font-size:16px">Sutra Studios</span><span class="t2">Yoga · Therapy · Movement</span></div></div>
+      <p>A sanctuary where wellness, therapy, and artistic movement converge. Two premium studios in the heart of Faridabad.</p>
+      <div class="social-links">
+        <a class="social-link" href="https://www.instagram.com/sutra_himani/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig1" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig1)" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="url(#ig1)" stroke-width="1.8" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="url(#ig1)"/></svg></a>
+        <a class="social-link" href="https://wa.me/919891525854" target="_blank" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0012.05 0C5.42 0 .06 5.36.06 11.99c0 2.12.55 4.18 1.6 6L0 24l6.18-1.62A11.96 11.96 0 0012.05 24c6.63 0 11.99-5.36 11.99-11.99a11.93 11.93 0 00-3.52-8.53z" fill="#25D366"/><path d="M17.46 14.44c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.18 8.18 0 01-2.4-1.48 9.06 9.06 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.06 2.85 1.2 3.05c.15.2 2.08 3.18 5.05 4.46.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" fill="white"/></svg></a>
+        <a class="social-link" href="#" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" fill="#1877F2"/></svg></a>
+        <a class="social-link" href="#" target="_blank" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" fill="#FF0000"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a onclick="showPage('svc-yoga')">Yoga & Wellness</a></li><li><a onclick="showPage('svc-meditation')">Meditation</a></li><li><a onclick="showPage('svc-aerial')">Aerial Yoga</a></li><li><a onclick="showPage('svc-therapy')">Therapeutic Yoga</a></li><li><a onclick="showPage('svc-movement')">Creative Movement</a></li><li><a onclick="showPage('svc-workshops')">Workshops</a></li><li><a onclick="showPage('svc-online')">Online / Hybrid</a></li></ul></div>
+    <div class="footer-col"><h4>Studios</h4><ul><li><a onclick="showPage('sector17')">Yoga Sutra Studio</a></li><li><a onclick="showPage('sector21')">Yoga Sutra Studio</a></li><li><a onclick="showPage('instructors')">Our Instructors</a></li><li><a onclick="showPage('schedule')">Class Schedule</a></li><li><a onclick="showPage('sotm')">Student of Month</a></li></ul></div>
+    <div class="footer-col"><h4>Get in Touch</h4><ul><li><a href="https://wa.me/9891525854" target="_blank">💬 WhatsApp Us</a></li><li><a>📞 +91 9891525854</a></li><li><a>✉ sutra.himani@gmail.com</a></li><li><a>📍 Sector 17, Faridabad</a></li><li><a>📍 Sector 21A, Faridabad</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Sutra Studios. All rights reserved.</span><span>Crafted with ❤️ by AdVynce (Mayank Gautam)</span></div>
+</footer>
+</div><!-- /home -->
+
+<!-- ══════ SERVICE PAGES ══════ -->
+
+<!-- YOGA -->
+<div id="page-svc-yoga" class="page">
+  <div class="sp-hero">
+    <div class="sp-hero-bg" style="background-image:url('137A8327.webp');background-size:cover;background-position:center"></div>
+    <div class="sp-hero-bg-overlay"></div>
+    <div class="sp-hero-content">
+      <div class="section-eyebrow">Yoga & Wellness</div>
+      <h1>Classical Yoga<br>for the <em>Modern Soul</em></h1>
+      <p class="sp-hero-lead">Hatha, Aerial Contemporary Dance, Ashtanga, Yin, Prenatal, Power Yoga — authentic practices taught with precision and warmth. From complete beginners to seasoned practitioners.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20join%20a%20Yoga%20class!" target="_blank">💬 Book Free Trial</a><button class="btn-outline" onclick="goBackHome('services')">← Back to Home</button></div>
+    </div>
+  </div>
+  <div class="sp-gallery" style="background:var(--black)"><div class="container"><div class="section-eyebrow">Studio Moments</div><h2 class="section-title">Yoga in <em>Motion</em></h2><div class="sp-gallery-grid">
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('yoga1.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Hatha Flow</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('yoga2.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Morning Practice</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('yoga3.webp');background-size:coverx"></div><div class="sp-g-overlay"><div class="sp-g-label">Meditation</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('yoga4.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Aerial Contemporary Dance Class</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('yoga5.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Anti Ageing</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('yoga6.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Prenatal Yoga</div></div></div>
+  </div></div></div>
+  <div class="sp-who"><div class="sp-who-grid"><div><div class="section-eyebrow">Who This Is For</div><h2 class="section-title">Everyone is<br><em>Welcome</em></h2><p class="section-body" style="margin-bottom:0">Our yoga classes are structured for every level, age group, and intention — from 12 to 80.</p><ul class="who-list"><li>Complete beginners with no experience</li><li>People wanting to build strength and flexibility</li><li>Those seeking stress relief and mental clarity</li><li>Intermediate and advanced practitioners</li><li>Anyone returning after injury or long break</li><li>Students, professionals, homemakers, seniors</li></ul></div><div style="display:flex;justify-content:center"><div class="who-visual">🧘</div></div></div></div>
+  <div class="sp-offerings"><div class="container"><div class="section-eyebrow">Class Styles</div><h2 class="section-title">Our <em>Offerings</em></h2><div class="offerings-grid"><div class="offering-card"><div class="o-tag">Foundation</div><h4>Hatha Yoga</h4><p>Classical postures, alignment, and breathwork. The perfect foundation — calm, precise, and deeply nourishing.</p></div><div class="offering-card"><div class="o-tag">Dynamic</div><h4>Aerial Contemporary Dance</h4><p>Breath-synchronised movement. Creative, fluid sequences building strength and meditative awareness simultaneously.</p></div><div class="offering-card"><div class="o-tag">Strength</div><h4>Power Yoga</h4><p>High-intensity, strength-focused practice. Build lean muscle, stamina, and physical resilience.</p></div><div class="offering-card"><div class="o-tag">Restorative</div><h4>Anti Ageing</h4><p>Long-held passive postures targeting deep connective tissue. For stress relief, flexibility, and inner stillness.</p></div><div class="offering-card"><div class="o-tag">Specialised</div><h4>Prenatal Yoga</h4><p>Gentle, safe practice for expectant mothers — community, support, and preparation for birth.</p></div><div class="offering-card"><div class="o-tag">Advanced</div><h4>Ashtanga</h4><p>Rigorous sequence practiced in order. Builds discipline, focus, and profound physical mastery over time.</p></div></div></div></div>
+  <div class="sp-process"><div class="container"><div class="section-eyebrow">Your Journey</div><h2 class="section-title">How It <em>Works</em></h2><div class="process-steps"><div class="process-step"><div class="step-num">01</div><h4>Free Consultation</h4><p>WhatsApp us. We understand your goals, health history, and experience level.</p></div><div class="process-step"><div class="step-num">02</div><h4>First Class Free</h4><p>Attend your complimentary trial. No equipment needed, just comfortable clothes.</p></div><div class="process-step"><div class="step-num">03</div><h4>Personalised Path</h4><p>We recommend your ideal class style, schedule, and studio based on your first session.</p></div><div class="process-step"><div class="step-num">04</div><h4>Ongoing Guidance</h4><p>Regular check-ins, progress tracking, and modifications ensure you grow safely.</p></div></div></div></div>
+  <div class="sp-benefits"><div class="container"><div class="section-eyebrow">What You Gain</div><h2 class="section-title">The <em>Benefits</em></h2><div class="benefits-grid"><div class="benefit-card"><div class="benefit-icon">🦴</div><div><h4>Flexibility & Mobility</h4><p>Release chronic tension, improve range of motion, move through life with greater ease.</p></div></div><div class="benefit-card"><div class="benefit-icon">💪</div><div><h4>Strength & Posture</h4><p>Build functional strength, correct postural imbalances from desk work and daily habits.</p></div></div><div class="benefit-card"><div class="benefit-icon">🧠</div><div><h4>Mental Clarity</h4><p>Reduce anxiety, improve focus, and develop a calmer relationship with your mind.</p></div></div><div class="benefit-card"><div class="benefit-icon">😴</div><div><h4>Better Sleep</h4><p>Regulate your nervous system and improve sleep quality through breathwork and restorative practice.</p></div></div><div class="benefit-card"><div class="benefit-icon">⚡</div><div><h4>Energy & Vitality</h4><p>Move from fatigue to sustained energy throughout your day through consistent practice.</p></div></div><div class="benefit-card"><div class="benefit-icon">🌟</div><div><h4>Self-Awareness</h4><p>Develop a profound connection to your body and a deeper understanding of who you are.</p></div></div></div></div></div>
+  <div class="sp-book"><div class="section-eyebrow" style="justify-content:center">Start Today</div><h2>Your First Class<br>is <em>Free</em></h2><p>Message us on WhatsApp — we'll find the perfect class and time for you.</p><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20join%20a%20Yoga%20class%20at%20Sutra%20Studios!" target="_blank">💬 WhatsApp to Book Free Trial</a></div>
+  <!-- <div class="page-footer-nav"><button onclick="goBackHome('services')">← Back to Homepage</button></div> -->
+</div>
+
+<!-- MEDITATION -->
+<div id="page-svc-meditation" class="page">
+  <div class="sp-hero svc-meditation-hero">
+    <div class="sp-hero-bg" style="background:linear-gradient(135deg,#080d1a 0%,#0d1428 40%,#080d20 100%)">
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 800 600"><circle cx="400" cy="300" r="250" stroke="#8B7BC9" stroke-width="0.8" fill="none"/><circle cx="400" cy="300" r="180" stroke="#8B7BC9" stroke-width="0.6" fill="none"/><circle cx="400" cy="300" r="110" stroke="#C9A84C" stroke-width="0.5" fill="none"/><circle cx="400" cy="300" r="55" stroke="#C9A84C" stroke-width="0.4" fill="none"/><line x1="150" y1="300" x2="650" y2="300" stroke="#8B7BC9" stroke-width="0.4"/><line x1="400" y1="50" x2="400" y2="550" stroke="#8B7BC9" stroke-width="0.4"/><polygon points="400,80 620,430 180,430" stroke="#8B7BC9" stroke-width="0.5" fill="none" opacity="0.5"/><polygon points="400,520 180,170 620,170" stroke="#8B7BC9" stroke-width="0.5" fill="none" opacity="0.5"/></svg>
+    </div>
+    <div class="sp-hero-bg-overlay" style="background:linear-gradient(135deg,rgba(8,13,26,0.93) 0%,rgba(13,20,40,0.72) 55%,rgba(8,13,32,0.5) 100%)"></div>
+    <div class="sp-hero-content">
+      <div class="section-eyebrow" style="color:#8B7BC9">Meditation & Mindfulness</div>
+      <h1>Still the Mind.<br><em>Find</em> Yourself.</h1>
+      <p class="sp-hero-lead">Guided meditation, pranayama breathwork, yoga nidra and mindfulness practices. A dedicated space to calm the nervous system, restore mental clarity, and access deep inner stillness.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Meditation%20classes%20at%20Sutra%20Studios!" target="_blank">💬 Book Free Trial</a><button class="btn-outline" onclick="goBackHome('services')">← Back to Home</button></div>
+    </div>
+  </div>
+  <div class="sp-gallery" style="background:var(--black)"><div class="container"><div class="section-eyebrow" style="color:#8B7BC9">Moments of Stillness</div><h2 class="section-title">Meditation in <em>Practice</em></h2><div class="sp-gallery-grid">
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#080d1a,#0d1428);font-size:70px;display:flex;align-items:center;justify-content:center">🕉️</div><div class="sp-g-overlay"><div class="sp-g-label">Guided Meditation</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#0a0d20,#10152e);font-size:70px;display:flex;align-items:center;justify-content:center">🌬️</div><div class="sp-g-overlay"><div class="sp-g-label">Pranayama</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#080a1a,#0d1225);font-size:70px;display:flex;align-items:center;justify-content:center">🌙</div><div class="sp-g-overlay"><div class="sp-g-label">Yoga Nidra</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#0a0d22,#0f1430);font-size:70px;display:flex;align-items:center;justify-content:center">🪷</div><div class="sp-g-overlay"><div class="sp-g-label">Mindfulness</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#06081a,#0a1025);font-size:70px;display:flex;align-items:center;justify-content:center">✨</div><div class="sp-g-overlay"><div class="sp-g-label">Sound Healing</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#080c1e,#0d1428);font-size:70px;display:flex;align-items:center;justify-content:center">🧘</div><div class="sp-g-overlay"><div class="sp-g-label">Group Sit</div></div></div>
+  </div></div></div>
+  <div class="sp-who"><div class="sp-who-grid"><div><div class="section-eyebrow" style="color:#8B7BC9">Who This Is For</div><h2 class="section-title">Anyone Seeking<br><em>Inner Stillness</em></h2><p class="section-body" style="margin-bottom:0">Meditation is not about emptying the mind — it's about learning to sit with what's there, and finding peace within it.</p><ul class="who-list"><li>People with racing, anxious, or overactive minds</li><li>Those struggling with stress, burnout or overthinking</li><li>Anyone wanting to deepen their yoga practice</li><li>Beginners who've never meditated before</li><li>Professionals seeking mental clarity and focus</li><li>Anyone on a spiritual or self-discovery path</li></ul></div><div style="display:flex;justify-content:center"><div class="who-visual" style="border-color:rgba(139,123,201,0.2)">🕉️</div></div></div></div>
+  <div class="sp-offerings"><div class="container"><div class="section-eyebrow" style="color:#8B7BC9">What We Offer</div><h2 class="section-title">Meditation <em>Practices</em></h2><div class="offerings-grid"><div class="offering-card"><div class="o-tag" style="color:#8B7BC9">Foundation</div><h4>Guided Meditation</h4><p>Instructor-led sessions using visualisation, body scanning, and breath awareness to guide you into deep meditative states.</p></div><div class="offering-card"><div class="o-tag" style="color:#8B7BC9">Breathwork</div><h4>Pranayama</h4><p>Ancient yogic breathing techniques — Nadi Shodhana, Kapalabhati, Bhramari — to regulate the nervous system and energise the body.</p></div><div class="offering-card"><div class="o-tag" style="color:#8B7BC9">Deep Rest</div><h4>Yoga Nidra</h4><p>Yogic sleep — a deeply restorative practice that brings the body to the edge of sleep while the mind remains fully conscious.</p></div><div class="offering-card"><div class="o-tag" style="color:#8B7BC9">Daily Life</div><h4>Mindfulness Training</h4><p>Practical mindfulness tools to carry into daily life — eating, working, communicating — transforming ordinary moments into presence.</p></div><div class="offering-card"><div class="o-tag" style="color:#8B7BC9">Sound</div><h4>Sound Healing & Meditation</h4><p>Tibetan singing bowls, nature sounds and frequency work combined with meditation for a multi-sensory healing experience.</p></div><div class="offering-card"><div class="o-tag" style="color:#8B7BC9">Online</div><h4>Daily Online Sits</h4><p>Short 20–30 minute guided meditation sessions available online daily. Begin your day with stillness, from anywhere.</p></div></div></div></div>
+  <div class="sp-benefits"><div class="container"><div class="section-eyebrow" style="color:#8B7BC9">What You Gain</div><h2 class="section-title">The <em>Benefits</em></h2><div class="benefits-grid"><div class="benefit-card"><div class="benefit-icon">🧠</div><div><h4>Mental Clarity & Focus</h4><p>Regular meditation measurably improves concentration, decision-making, and cognitive performance.</p></div></div><div class="benefit-card"><div class="benefit-icon">😌</div><div><h4>Anxiety & Stress Relief</h4><p>Activate the parasympathetic nervous system — your body's natural rest and recovery mode.</p></div></div><div class="benefit-card"><div class="benefit-icon">😴</div><div><h4>Deeper, Restful Sleep</h4><p>Yoga nidra and evening meditation practices dramatically improve sleep quality and duration.</p></div></div><div class="benefit-card"><div class="benefit-icon">❤️</div><div><h4>Emotional Resilience</h4><p>Develop the ability to observe emotions without being controlled by them — respond rather than react.</p></div></div><div class="benefit-card"><div class="benefit-icon">🌟</div><div><h4>Spiritual Connection</h4><p>Access deeper dimensions of your being — stillness, presence, and quiet wisdom beneath thought.</p></div></div><div class="benefit-card"><div class="benefit-icon">⚡</div><div><h4>Energy & Vitality</h4><p>Paradoxically, doing less — sitting still — restores more energy than almost any other practice.</p></div></div></div></div></div>
+  <div class="sp-book" style="background:var(--dark)"><div class="section-eyebrow" style="justify-content:center;color:#8B7BC9">Begin Sitting</div><h2>Your First Session<br>is <em>Free</em></h2><p>No experience needed. No special cushion. Just you, your breath, and a willingness to be still.</p><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20try%20Meditation%20at%20Sutra%20Studios!" target="_blank">💬 WhatsApp to Book Free Session</a></div>
+  <!-- <div class="page-footer-nav"><button onclick="goBackHome('services')">← Back to Homepage</button></div> -->
+</div>
+
+<!-- AERIAL -->
+<div id="page-svc-aerial" class="page">
+  <div class="sp-hero">
+    <div class="sp-hero-bg" style="background-image:url('aerial cover.webp');background-size:cover;background-position:center"></div>
+    <div class="sp-hero-bg-overlay" style="background:linear-gradient(
+  135deg,
+  rgba(0,0,0,0.55) 0%,
+  rgba(0,0,0,0.35) 50%,
+  rgba(0,0,0,0.20) 100%
+)"></div>
+    <div class="sp-hero-content">
+      <div class="section-eyebrow" style="color:var(--teal)">Aerial Yoga · Rare in Faridabad</div>
+      <h1>Defy Gravity.<br><em>Heal</em> Your Spine.</h1>
+      <p class="sp-hero-lead">Suspended in premium silk hammocks, aerial yoga is a complete mind-body experience — decompressing the spine, deepening flexibility, and building core strength in ways ground-based yoga cannot reach.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Aerial%20Yoga!" target="_blank">💬 Book Free Aerial Trial</a><button class="btn-outline" onclick="goBackHome('services')">← Back to Home</button></div>
+    </div>
+  </div>
+  <div class="sp-gallery" style="background:var(--dark)"><div class="container"><div class="section-eyebrow" style="color:var(--teal)">In the Air</div><h2 class="section-title">Aerial <em>Moments</em></h2><div class="sp-gallery-grid">
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('3.webp');background-size:cover;background-position:center"></div><div class="sp-g-overlay"><div class="sp-g-label">Hammock Flow</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('4.webp');background-size:cover;background-position:center"></div><div class="sp-g-overlay"><div class="sp-g-label">Inversion</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('6.webp');background-size:cover;background-position:center"></div><div class="sp-g-overlay"><div class="sp-g-label">Core Work</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('aerial4.JPG');background-size:cover;background-position:center"></div><div class="sp-g-overlay"><div class="sp-g-label">Spine Release</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('aerial yoga.webp');background-size:cover;background-position:center"></div><div class="sp-g-overlay"><div class="sp-g-label">Group Class</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('2.webp');background-size:cover;background-position:center"></div><div class="sp-g-overlay"><div class="sp-g-label">Silk Stretch</div></div></div>
+  </div></div></div>
+  <div class="sp-who"><div class="sp-who-grid"><div><div class="section-eyebrow" style="color:var(--teal)">Who This Is For</div><h2 class="section-title">No Experience<br><em>Required</em></h2><p class="section-body" style="margin-bottom:0">You don't need to be flexible or athletic. The hammock supports you fully.</p><ul class="who-list"><li>Anyone with chronic back or spine pain</li><li>People who feel stuck in regular yoga</li><li>Those wanting to try something truly unique</li><li>Fitness enthusiasts seeking a new challenge</li><li>Those recovering from postural issues</li><li>Beginners and experienced yogis alike</li></ul></div><div style="display:flex;justify-content:center"><div class="who-visual" style="border-color:rgba(42,157,143,0.2)">🪁</div></div></div></div>
+  <div class="sp-offerings"><div class="container"><div class="section-eyebrow" style="color:var(--teal)">Class Types</div><h2 class="section-title">Aerial <em>Experiences</em></h2><div class="offerings-grid"><div class="offering-card"><div class="o-tag">Beginner</div><h4>Aerial Foundations</h4><p>Learn hammock basics, inversions, and core engagement in a safe, supportive environment.</p></div><div class="offering-card"><div class="o-tag">Intermediate</div><h4>Aerial Contemporary Dance</h4><p>Flow sequences combining air and ground work for a dynamic, meditative movement experience.</p></div><div class="offering-card"><div class="o-tag">Therapeutic</div><h4>Aerial Spine Therapy</h4><p>Gentle spinal decompression and therapeutic inversions for chronic back pain and disc issues.</p></div><div class="offering-card"><div class="o-tag">Restorative</div><h4>Anti Ageing</h4><p>Deeply relaxing hammock support for long-held stretches, releasing years of tension.</p></div><div class="offering-card"><div class="o-tag">Private</div><h4>1-on-1 Aerial Sessions</h4><p>Personalised aerial instruction tailored to your body, goals, and pace of learning.</p></div><div class="offering-card"><div class="o-tag">Group</div><h4>Aerial Party Packages</h4><p>Bachelorette parties, team outings, birthdays — unforgettable aerial experiences for groups.</p></div></div></div></div>
+  <div class="sp-benefits"><div class="container"><div class="section-eyebrow" style="color:var(--teal)">Why Aerial</div><h2 class="section-title">The <em>Benefits</em></h2><div class="benefits-grid"><div class="benefit-card"><div class="benefit-icon">🦴</div><div><h4>Spinal Decompression</h4><p>Gravity-assisted traction relieves compression between vertebrae — incredible for disc issues and back pain.</p></div></div><div class="benefit-card"><div class="benefit-icon">💪</div><div><h4>Core Strength</h4><p>Every movement in the hammock activates your core — building deep stabilising muscles effortlessly.</p></div></div><div class="benefit-card"><div class="benefit-icon">🤸</div><div><h4>Deeper Flexibility</h4><p>The hammock allows you to safely go deeper into stretches than ground-based practice allows.</p></div></div><div class="benefit-card"><div class="benefit-icon">🧠</div><div><h4>Proprioception & Balance</h4><p>Navigating an unstable surface dramatically improves body awareness and spatial intelligence.</p></div></div><div class="benefit-card"><div class="benefit-icon">😊</div><div><h4>Joy & Playfulness</h4><p>There's nothing quite like the feeling of flying. Aerial yoga reconnects you to the joy of movement.</p></div></div><div class="benefit-card"><div class="benefit-icon">🩸</div><div><h4>Lymphatic Circulation</h4><p>Inversions boost lymphatic flow, improving immunity, reducing inflammation, and detoxifying the body.</p></div></div></div></div></div>
+  <div class="sp-book" style="background:var(--black)"><div class="section-eyebrow" style="justify-content:center;color:var(--teal)">Try It Once</div><h2>You'll Never Look<br>at Yoga <em>The Same</em></h2><p>Your first aerial class is free. Come curious, leave transformed.</p><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Aerial%20Yoga!" target="_blank">💬 WhatsApp to Book Free Aerial Class</a></div>
+  <!-- <div class="page-footer-nav"><button onclick="goBackHome('services')">← Back to Homepage</button></div> -->
+</div>
+
+<!-- THERAPY -->
+<div id="page-svc-therapy" class="page">
+  <div class="sp-hero">
+    <div class="sp-hero-bg" style="background-image:url('wellness.webp');background-size:cover;background-position:center"></div>
+    <div class="sp-hero-bg-overlay" style="background:linear-gradient(
+  135deg,
+  rgba(0,0,0,0.55) 0%,
+  rgba(0,0,0,0.35) 50%,
+  rgba(0,0,0,0.20) 100%
+)"></div>
+    <div class="sp-hero-content">
+      <div class="section-eyebrow" style="color:var(--rose)">Therapeutic Yoga</div>
+      <h1>Yoga as<br><em>Medicine</em></h1>
+      <p class="sp-hero-lead">Specifically designed yoga therapy for PCOS, chronic back pain, anxiety, and postural correction. Not fitness — healing. Evidence-informed, deeply personalised, compassionate.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Therapeutic%20Yoga!" target="_blank">💬 Tell Us Your Condition</a><button class="btn-outline" onclick="goBackHome('services')">← Back to Home</button></div>
+    </div>
+  </div>
+  <div class="sp-gallery" style="background:var(--dark)"><div class="container"><div class="section-eyebrow" style="color:var(--rose)">Healing Moments</div><h2 class="section-title">Therapy in <em>Practice</em></h2><div class="sp-gallery-grid">
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#1a0d0a,#2d1510);font-size:70px">💚</div><div class="sp-g-overlay"><div class="sp-g-label">PCOS Programme</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#1f0d0d,#301515);font-size:70px">🦴</div><div class="sp-g-overlay"><div class="sp-g-label">Back Therapy</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#1a1008,#2a1a0a);font-size:70px">🧘‍♀️</div><div class="sp-g-overlay"><div class="sp-g-label">1-on-1 Session</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#0d1a10,#152a18);font-size:70px">🌸</div><div class="sp-g-overlay"><div class="sp-g-label">Hormonal Healing</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#1a0d12,#2a1520);font-size:70px">🕊️</div><div class="sp-g-overlay"><div class="sp-g-label">Anxiety Relief</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background:linear-gradient(135deg,#100d1a,#1a1528);font-size:70px">🌺</div><div class="sp-g-overlay"><div class="sp-g-label">Prenatal Care</div></div></div>
+  </div></div></div>
+  <div class="sp-who" style="background:var(--black)"><div class="sp-who-grid"><div><div class="section-eyebrow" style="color:var(--rose)">Who This Is For</div><h2 class="section-title">Healing for<br><em>Your Body</em></h2><p class="section-body" style="margin-bottom:0">Therapeutic yoga is about addressing the root cause of what's hurting — physically and emotionally.</p><ul class="who-list"><li>Women with PCOS / PCOD seeking natural relief</li><li>Anyone with chronic back pain or disc problems</li><li>People managing anxiety, depression, or burnout</li><li>Those with postural issues from desk work</li><li>Individuals recovering from injury or surgery</li><li>Anyone given "there's nothing we can do" advice</li></ul></div><div style="display:flex;justify-content:center"><div class="who-visual" style="border-color:rgba(196,120,106,0.2)">💚</div></div></div></div>
+  <div class="sp-offerings"><div class="container"><div class="section-eyebrow" style="color:var(--rose)">Specialisations</div><h2 class="section-title">Conditions We<br><em>Address</em></h2><div class="offerings-grid"><div class="offering-card"><div class="o-tag" style="color:var(--rose)">Hormonal</div><h4>PCOS / PCOD Yoga</h4><p>Specific sequences to regulate hormones, reduce inflammation, and restore cycle regularity naturally.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--rose)">Musculoskeletal</div><h4>Back Pain & Spine</h4><p>Targeted therapy for lumbar pain, disc bulges, sciatica, and scoliosis. Strengthen, decompress, and heal.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--rose)">Mental Health</div><h4>Anxiety & Depression</h4><p>Breathwork, restorative postures, and somatic practices that directly regulate the nervous system and lift mood.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--rose)">Posture</div><h4>Postural Correction</h4><p>Identify and correct muscular imbalances from extended sitting, tech neck, and repetitive movement patterns.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--rose)">Pregnancy</div><h4>Pre & Postnatal Care</h4><p>Safe, specialised yoga during all trimesters and postpartum recovery — for mother and baby's wellbeing.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--rose)">Custom</div><h4>Bespoke Programmes</h4><p>Fully personalised therapeutic plans for any condition. We assess, design, and guide your healing journey.</p></div></div></div></div>
+  <div class="sp-process" style="background:var(--dark)"><div class="container"><div class="section-eyebrow" style="color:var(--rose)">Our Approach</div><h2 class="section-title">The Therapeutic<br><em>Process</em></h2><div class="process-steps"><div class="process-step"><div class="step-num">01</div><h4>Initial Assessment</h4><p>Deep conversation about your condition, medical history, lifestyle, and healing goals.</p></div><div class="process-step"><div class="step-num">02</div><h4>Custom Programme</h4><p>A personalised yoga therapy plan created specifically for your body, condition, and timeline.</p></div><div class="process-step"><div class="step-num">03</div><h4>Guided Sessions</h4><p>1-on-1 or small group therapeutic sessions with Himani's expert instruction and continuous adjustment.</p></div><div class="process-step"><div class="step-num">04</div><h4>Progress & Evolution</h4><p>Regular reassessment and programme evolution as your body heals, strengthens, and transforms.</p></div></div></div></div>
+  <div class="sp-book" style="background:var(--black)"><div class="section-eyebrow" style="justify-content:center;color:var(--rose)">Begin Healing</div><h2>Tell Us What<br>You're <em>Carrying</em></h2><p>Share your condition on WhatsApp. We'll design your personal therapeutic yoga programme.</p><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20know%20how%20Therapeutic%20Yoga%20can%20help%20my%20condition." target="_blank">💬 WhatsApp for Free Consultation</a></div>
+  <!-- <div class="page-footer-nav"><button onclick="goBackHome('services')">← Back to Homepage</button></div> -->
+</div>
+
+<!-- MOVEMENT -->
+<div id="page-svc-movement" class="page">
+  <div class="sp-hero">
+    <div class="sp-hero-bg" style="background-image:url('creative.webp');background-size:cover;background-position:center"></div>
+    <div class="sp-hero-bg-overlay" style="background:linear-gradient(
+  135deg,
+  rgba(0,0,0,0.55) 0%,
+  rgba(0,0,0,0.35) 50%,
+  rgba(0,0,0,0.20) 100%
+)"></div>
+    <div class="sp-hero-content">
+      <div class="section-eyebrow">Creative Movement & Dance Therapy</div>
+      <h1>Move. Feel.<br><em>Become.</em></h1>
+      <p class="sp-hero-lead">Dance therapy and creative movement as pathways to emotional release, self-discovery, and deep joy. Your body holds wisdom your mind cannot access — we help you listen.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Creative%20Movement!" target="_blank">💬 Book Free Movement Class</a><button class="btn-outline" onclick="goBackHome('services')">← Back to Home</button></div>
+    </div>
+  </div>
+  <div class="sp-gallery" style="background:var(--black)"><div class="container"><div class="section-eyebrow">Creative Expression</div><h2 class="section-title">Movement in <em>Action</em></h2><div class="sp-gallery-grid">
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('creative1.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Dance Therapy</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('creative2.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Free Movement</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('creative3.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Sound & Movement</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('creative4.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Somatic Flow</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('creative5.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Group Circle</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('creative6.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Expressive Arts</div></div></div>
+  </div></div></div>
+  <div class="sp-who"><div class="sp-who-grid"><div><div class="section-eyebrow">Who This Is For</div><h2 class="section-title">No Dance<br><em>Experience Needed</em></h2><p class="section-body" style="margin-bottom:0">Creative movement isn't about performance — it's about authentic expression. Everyone has a body. Everyone can move.</p><ul class="who-list"><li>People feeling emotionally stuck or numb</li><li>Anyone dealing with grief, loss, or transition</li><li>Those wanting to rediscover joy in their body</li><li>Creatives seeking embodied inspiration</li><li>Those with body image or confidence challenges</li><li>Children and teenagers for emotional development</li></ul></div><div style="display:flex;justify-content:center"><div class="who-visual">🎭</div></div></div></div>
+  <div class="sp-offerings" style="background:var(--dark)"><div class="container"><div class="section-eyebrow">Movement Modalities</div><h2 class="section-title">Our Creative<br><em>Offerings</em></h2><div class="offerings-grid"><div class="offering-card"><div class="o-tag">Therapeutic</div><h4>Dance Movement Therapy</h4><p>Accredited therapeutic practice using movement to process emotions, trauma, and psychological challenges.</p></div><div class="offering-card"><div class="o-tag">Somatic</div><h4>Somatic Movement</h4><p>Body-led, sensation-focused movement to release stored tension and reconnect mind and body.</p></div><div class="offering-card"><div class="o-tag">Expressive</div><h4>Free Movement Flow</h4><p>Guided free-form movement with music — no choreography, no judgement. Pure expression.</p></div><div class="offering-card"><div class="o-tag">Youth</div><h4>Kids Movement & Play</h4><p>Creative movement for children aged 5-16. Builds confidence, coordination, emotional intelligence, and joy.</p></div><div class="offering-card"><div class="o-tag">Group</div><h4>Emotional Release Circles</h4><p>Facilitated group sessions combining breath, sound, and movement for collective emotional processing.</p></div><div class="offering-card"><div class="o-tag">Workshop</div><h4>Movement Intensives</h4><p>Weekend or evening deep-dives into specific themes — grief, joy, identity, transition, creativity.</p></div></div></div></div>
+  <div class="sp-benefits"><div class="container"><div class="section-eyebrow">Transformation</div><h2 class="section-title">What Movement<br><em>Unlocks</em></h2><div class="benefits-grid"><div class="benefit-card"><div class="benefit-icon">💆</div><div><h4>Emotional Release</h4><p>Process stored emotions your nervous system has been holding — safely, naturally, through movement.</p></div></div><div class="benefit-card"><div class="benefit-icon">✨</div><div><h4>Body Confidence</h4><p>Develop a kind, joyful relationship with your body — regardless of size, age, or ability.</p></div></div><div class="benefit-card"><div class="benefit-icon">🎨</div><div><h4>Creative Awakening</h4><p>Movement unlocks creativity in all areas of life — artists, writers, and entrepreneurs find it transformative.</p></div></div><div class="benefit-card"><div class="benefit-icon">🤝</div><div><h4>Community & Connection</h4><p>Group movement creates profound bonds — you'll leave with a community as much as a practice.</p></div></div></div></div></div>
+  <div class="sp-book" style="background:var(--dark)"><div class="section-eyebrow" style="justify-content:center">Start Moving</div><h2>Your Body Has<br>Been Waiting to <em>Dance</em></h2><p>First session is free. Come as you are — no experience, no performance, just you.</p><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20try%20Creative%20Movement!" target="_blank">💬 WhatsApp to Book</a></div>
+  <!-- <div class="page-footer-nav"><button onclick="goBackHome('services')">← Back to Homepage</button></div> -->
+</div>
+
+<!-- WORKSHOPS -->
+<div id="page-svc-workshops" class="page">
+  <div class="sp-hero">
+    <div class="sp-hero-bg" style="background-image:url('workshop.webp');background-size:cover;background-position:center"></div>
+    <div class="sp-hero-bg-overlay" style="background:linear-gradient(
+  135deg,
+  rgba(0,0,0,0.55) 0%,
+  rgba(0,0,0,0.35) 50%,
+  rgba(0,0,0,0.20) 100%
+)""></div>
+    <div class="sp-hero-content">
+      <div class="section-eyebrow">Workshops & Retreats</div>
+      <h1>Transformative<br><em>Experiences</em></h1>
+      <p class="sp-hero-lead">Corporate wellness programmes, emotional release workshops, stress relief intensives, and seasonal retreats. Designed for lasting transformation — not just a nice afternoon.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20a%20Workshop!" target="_blank">💬 Enquire via WhatsApp</a><button class="btn-outline" onclick="goBackHome('services')">← Back to Home</button></div>
+    </div>
+  </div>
+  <div class="sp-gallery" style="background:var(--dark)"><div class="container"><div class="section-eyebrow">Workshop Moments</div><h2 class="section-title">Experiences in <em>Action</em></h2><div class="sp-gallery-grid">
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('work1.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Corporate Wellness</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('work2.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Stress Intensive</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('work3.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Seasonal Retreat</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('work4.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Release Workshop</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('work5.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Team Wellness</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('work6.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Virtual Workshop</div></div></div>
+  </div></div></div>
+  <div class="sp-offerings" style="background:var(--black)"><div class="container"><div class="section-eyebrow">Workshop Types</div><h2 class="section-title">Our <em>Experiences</em></h2><div class="offerings-grid"><div class="offering-card"><div class="o-tag">Corporate</div><h4>Corporate Wellness Programmes</h4><p>Half-day, full-day, or ongoing monthly programmes for organisations. Reduce burnout and boost productivity.</p></div><div class="offering-card"><div class="o-tag">Emotional</div><h4>Stress Relief Intensives</h4><p>Weekend deep-dives combining breathwork, yoga nidra, meditation, and movement for profound nervous system reset.</p></div><div class="offering-card"><div class="o-tag">Seasonal</div><h4>Seasonal Retreats</h4><p>Quarterly retreats themed around seasonal transitions — releasing, renewing, planting, harvesting.</p></div><div class="offering-card"><div class="o-tag">Special</div><h4>Emotional Release Workshops</h4><p>Safe, facilitated spaces for processing stored emotions through breath, movement, sound, and guided somatic practice.</p></div><div class="offering-card"><div class="o-tag">Online</div><h4>Virtual Corporate Workshops</h4><p>Interactive online wellness sessions for remote and distributed teams — equally transformative, anywhere in India.</p></div><div class="offering-card"><div class="o-tag">Custom</div><h4>Bespoke Events</h4><p>Bridal parties, school programmes, community events, NGO collaborations — we design to your vision.</p></div></div></div></div>
+  <div class="sp-benefits"><div class="container"><div class="section-eyebrow">Why Workshops Work</div><h2 class="section-title">The <em>Impact</em></h2><div class="benefits-grid"><div class="benefit-card"><div class="benefit-icon">🏢</div><div><h4>For Organisations</h4><p>Reduced sick days, higher engagement, better team communication, and measurable improvements in productivity.</p></div></div><div class="benefit-card"><div class="benefit-icon">🌱</div><div><h4>For Individuals</h4><p>Breakthroughs that regular weekly classes rarely create — immersive time creates deep transformation.</p></div></div><div class="benefit-card"><div class="benefit-icon">🤝</div><div><h4>For Teams</h4><p>Shared vulnerable experiences build trust and authentic connection between colleagues at every level.</p></div></div><div class="benefit-card"><div class="benefit-icon">📈</div><div><h4>Lasting Change</h4><p>Skills, tools, and insights that participants carry into their lives and work long after the workshop ends.</p></div></div></div></div></div>
+  <div class="sp-book" style="background:var(--dark)"><div class="section-eyebrow" style="justify-content:center">Book Your Experience</div><h2>Let's Design<br>Something <em>Extraordinary</em></h2><p>Tell us who you are, how many people, and what transformation you're seeking.</p><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20booking%20a%20workshop!" target="_blank">💬 WhatsApp to Enquire</a></div>
+  <!-- <div class="page-footer-nav"><button onclick="goBackHome('services')">← Back to Homepage</button></div> -->
+</div>
+
+<!-- ONLINE -->
+<div id="page-svc-online" class="page">
+  <div class="sp-hero">
+    <div class="sp-hero-bg" style="background-image:url('online (2).webp');background-size:cover;background-position:center"></div>
+    <div class="sp-hero-bg-overlay" style="background:linear-gradient(
+  135deg,
+  rgba(0,0,0,0.55) 0%,
+  rgba(0,0,0,0.35) 50%,
+  rgba(0,0,0,0.20) 100%
+)"></div>
+    <div class="sp-hero-content">
+      <div class="section-eyebrow" style="color:var(--teal)">Online & Hybrid Classes</div>
+      <h1>Your Practice,<br><em>Anywhere</em></h1>
+      <p class="sp-hero-lead">Live-streamed and on-demand classes with the same quality instruction you'd receive in-studio. Your practice doesn't stop because life gets busy.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Online%20Yoga%20classes!" target="_blank">💬 Join Online — Free First Class</a><button class="btn-outline" onclick="goBackHome('services')">← Back to Home</button></div>
+    </div>
+  </div>
+  <div class="sp-gallery" style="background:var(--dark)"><div class="container"><div class="section-eyebrow" style="color:var(--teal)">Online Community</div><h2 class="section-title">Practice <em>Anywhere</em></h2><div class="sp-gallery-grid">
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('online1.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Live Streaming</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('online2.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Mobile Practice</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('online3.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Global Students</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('online4.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">1-on-1 Online</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('online5.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Community</div></div></div>
+    <div class="sp-g-item"><div class="sp-g-bg" style="background-image:url('online6.webp');background-size:cover"></div><div class="sp-g-overlay"><div class="sp-g-label">Library Access</div></div></div>
+  </div></div></div>
+  <div class="sp-offerings"><div class="container"><div class="section-eyebrow" style="color:var(--teal)">Online Options</div><h2 class="section-title">Flexible <em>Formats</em></h2><div class="offerings-grid"><div class="offering-card"><div class="o-tag" style="color:var(--teal)">Live</div><h4>Live-Streamed Classes</h4><p>Real-time classes with direct interaction with Himani. Same quality as in-person — she sees you, adjusts you, guides you.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--teal)">On-Demand</div><h4>Recorded Class Library</h4><p>Practice whenever suits you from a growing library of yoga, breathwork, meditation, and movement sessions.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--teal)">Hybrid</div><h4>Flexible Membership</h4><p>Come in-studio when you can, go online when you can't. One membership, full flexibility, zero gap in your practice.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--teal)">Private</div><h4>1-on-1 Online Sessions</h4><p>Personalised private sessions via video call. Ideal for therapeutic work, specific goals, or undivided attention.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--teal)">Community</div><h4>Digital Wellness Community</h4><p>WhatsApp community of Sutra students — shared progress, accountability, resources, and connection.</p></div><div class="offering-card"><div class="o-tag" style="color:var(--teal)">Global</div><h4>International Students</h4><p>Our online programme welcomes students from anywhere in the world. Practice authentic Indian yoga with a master.</p></div></div></div></div>
+  <div class="sp-book" style="background:var(--black)"><div class="section-eyebrow" style="justify-content:center;color:var(--teal)">Start Online</div><h2>Practice from<br><em>Wherever You Are</em></h2><p>Your first online class is free. Message us to set up your access and schedule.</p><a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20try%20an%20Online%20Yoga%20class!" target="_blank">💬 WhatsApp to Start Online</a></div>
+  <!-- <div class="page-footer-nav"><button onclick="goBackHome('services')">← Back to Homepage</button></div> -->
+</div>
+
+<!-- ══════ STUDIO PAGES ══════ -->
+
+<!-- SECTOR 17 -->
+<div id="page-sector17" class="page">
+  <div class="std-hero">
+    <div class="std-hero-bg" style="background-image:url('sector17.webp');background-size:cover">
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06" viewBox="0 0 800 600"><rect x="100" y="100" width="600" height="400" rx="4" stroke="#C9A84C" stroke-width="0.6" fill="none"/><line x1="400" y1="100" x2="400" y2="500" stroke="#2A9D8F" stroke-width="0.4"/><line x1="100" y1="300" x2="700" y2="300" stroke="#2A9D8F" stroke-width="0.4"/><circle cx="400" cy="300" r="100" stroke="#C9A84C" stroke-width="0.4" fill="none"/></svg>
+    </div>
+    <div class="std-hero-bg-overlay"></div>
+    <div class="std-hero-content">
+      <div class="section-eyebrow">📍 Sector 17, Faridabad</div>
+      <h1><em>Yoga</em> Sutra Studio<br>Sector 17</h1>
+      <p>Our flagship studio — a 2,000 sq ft haven of serenity, crafted to elevate every aspect of your practice. Led personally by Master Instructor Himani.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20class%20at%20the%20Sector%2017%20Studio!" target="_blank">💬 Book Free Class Here</a>
+        <button class="btn-outline" onclick="goBackHome('studios')">← Back to Home</button>
+      </div>
+    </div>
+  </div>
+  <div class="std-details">
+    <div class="std-detail-card"><div class="icon">⏰</div><h3>Studio Hours</h3><p>Mon – Fri: 6:00 AM – 12:00 Noon<br>4:00 PM – 9:00 PM</p></div>
+    <div class="std-detail-card"><div class="icon">📍</div><h3>Address</h3><p>Basement, Huda Market, Sutra Yoga Studio<br>Yash Clinics, NHS 06<br>Sector 17 <br>Faridabad – 121001, Haryana</p></div>
+    <div class="std-detail-card"><div class="icon">💬</div><h3>Contact</h3><p><a href="https://wa.me/919891525854" target="_blank" style="color:var(--teal);text-decoration:none">WhatsApp: +91 9891525854</a><br>Phone: +91 9818881907<br>Email: sutra.himani@gmail.com</p></div>
+  </div>
+  <div class="std-amenities">
+    <div style="max-width:1200px">
+      <div class="section-eyebrow">Studio Facilities</div>
+      <h2 class="section-title">Studio <em>Highlights</em></h2>
+      <div class="amenity-grid">
+        <div class="amenity-item"><div class="icon">🏛️</div><span>2,000 sq ft Main Hall</span></div>
+        <div class="amenity-item"><div class="icon">🪁</div><span>Aerial Yoga Rigs</span></div>
+        <div class="amenity-item"><div class="icon">🔊</div><span>Premium Sound System</span></div>
+        <div class="amenity-item"><div class="icon">🚿</div><span>Changing Rooms & Showers</span></div>
+        <div class="amenity-item"><div class="icon">🌿</div><span>Rooftop Meditation Deck</span></div>
+        <div class="amenity-item"><div class="icon">🥤</div><span>Organic Juice Bar</span></div>
+        <div class="amenity-item"><div class="icon">🅿️</div><span>Free Parking</span></div>
+        <div class="amenity-item"><div class="icon">♿</div><span>Wheelchair Accessible</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- Instagram — @sutra_yogastudio for Sector 17 -->
+  <div class="std-insta">
+    <div class="section-eyebrow">Follow Along</div>
+    <h2 class="section-title" style="margin-bottom:8px">Latest from <em>Instagram</em></h2>
+    <p style="font-size:14px;color:var(--gray-light);margin-bottom:0">See our latest classes, transformations and moments from the Yoga Sutra Studio.</p>
+    <div class="insta-embed-card">
+      <div class="insta-card-header">
+        <div class="insta-card-header-left">
+          <div class="insta-avatar-ring"><div class="insta-avatar-inner">📸</div></div>
+          <div><div class="insta-handle-name">@sutra_yogastudio</div><div class="insta-handle-sub">Yoga Sutra Studio · Sector 17</div></div>
+        </div>
+        <a class="insta-follow-btn" href="https://www.instagram.com/sutra_yogastudio/" target="_blank">Follow</a>
+      </div>
+      <div class="insta-embed-body" style="padding:16px 20px">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sutra_yogastudio/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:unset;padding:0;width:100%">
+          <div style="padding:16px">
+            <a href="https://www.instagram.com/sutra_yogastudio/" target="_blank" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%">
+              <div style="display:flex;flex-direction:row;align-items:center"><div style="background-color:#F4F4F4;border-radius:50%;height:40px;margin-right:14px;width:40px"></div><div style="display:flex;flex-direction:column;flex-grow:1"><div style="background-color:#F4F4F4;border-radius:4px;height:14px;margin-bottom:6px;width:100px"></div><div style="background-color:#F4F4F4;border-radius:4px;height:14px;width:60px"></div></div></div>
+              <div style="padding:19% 0"></div>
+              <div style="display:block;height:50px;margin:0 auto 12px;width:50px">
+                <svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M56.81 0H3.19C1.43 0 0 1.43 0 3.19v53.62C0 58.57 1.43 60 3.19 60h53.62C58.57 60 60 58.57 60 56.81V3.19C60 1.43 58.57 0 56.81 0zM30 44.14c-7.79 0-14.14-6.35-14.14-14.14S22.21 15.86 30 15.86 44.14 22.21 44.14 30 37.79 44.14 30 44.14zm16.5-26.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="url(#ig_s17)"/><defs><linearGradient id="ig_s17" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs></svg>
+              </div>
+              <div style="padding-top:8px"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px">View this profile on Instagram</div></div>
+              <div style="padding:12.5% 0"></div>
+            </a>
+            <p style="margin:8px 0 0;padding:0 4px"><a href="https://www.instagram.com/sutra_yogastudio/" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;text-decoration:none" target="_blank">sutra_yogastudio</a> • Follow for yoga, wellness & transformation at Sector 17</p>
+          </div>
+        </blockquote>
+      </div>
+      <div class="insta-card-footer">
+        <a href="https://www.instagram.com/sutra_yogastudio/" target="_blank">
+          <svg class="insta-ig-logo" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig_f17" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig_f17)" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="url(#ig_f17)" stroke-width="1.8" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="url(#ig_f17)"/></svg>
+          Open @sutra_yogastudio on Instagram ↗
+        </a>
+        <span style="font-size:11px;color:var(--gray)">Posts load automatically</span>
+      </div>
+    </div>
+  </div>
+  <div class="std-book-bar">
+    <div class="section-eyebrow" style="justify-content:center">Join Us</div>
+    <h2>Begin at <em>Yoga Sutra Studio</em></h2>
+    <p>Your first class is completely free — no commitment, no pressure.</p>
+    <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20class%20at%20Yoga%20Sutra%20Studio%20Sector%2017!" target="_blank">💬 WhatsApp to Book Free Class</a>
+  </div>
+  <div class="page-footer-nav"><button onclick="goBackHome('studios')">← Back to Homepage</button></div>
+</div>
+
+<!-- SECTOR 21A -->
+<div id="page-sector21" class="page">
+  <div class="std-hero">
+    <div class="std-hero-bg" style="background-image:url('sector21A.webp');background-size:cover">
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06" viewBox="0 0 800 600"><ellipse cx="400" cy="300" rx="280" ry="200" stroke="#C9A84C" stroke-width="0.6" fill="none"/><ellipse cx="400" cy="300" rx="200" ry="140" stroke="#C9A84C" stroke-width="0.4" fill="none"/><path d="M200 150 Q400 50 600 150 Q700 300 600 450 Q400 550 200 450 Q100 300 200 150" stroke="#2A9D8F" stroke-width="0.5" fill="none"/></svg>
+    </div>
+    <div class="std-hero-bg-overlay" ></div>
+    <div class="std-hero-content">
+      <div class="section-eyebrow">📍 Sector 21A, Faridabad</div>
+      <h1><em>Yoga Sutra studio</em><br>Sector 21A</h1>
+      <p>A lush, garden-inspired retreat. Open-air yoga deck, Himalayan salt therapy, private pods — surrounded by greenery and calm.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20class%20at%20the%20Garden%20Studio%20Sector%2021A!" target="_blank" style="background:linear-gradient(135deg,var(--teal),#1a6b62)">💬 Book Free Class Here</a>
+        <button class="btn-outline" onclick="goBackHome('studios')">← Back to Home</button>
+      </div>
+    </div>
+  </div>
+  <div class="std-details">
+    <div class="std-detail-card"><div class="icon">⏰</div><h3>Studio Hours</h3><p>Mon – Fri: 6:00 AM – 12:00 Noon<br>4:00 PM – 9:00 PM</p></div>
+    <div class="std-detail-card"><div class="icon">📍</div><h3>Address</h3><p>House No. 169<br>Sector 21A, Faridabad – 121001<br>Haryana, India</p></div>
+    <div class="std-detail-card"><div class="icon">💬</div><h3>Contact</h3><p><a href="https://wa.me/919891525854" target="_blank" style="color:var(--teal);text-decoration:none">WhatsApp: +91 9891525854</a><br>Phone: +91 9818881907<br>Email: sutra.himani@gmail.com</p></div>
+  </div>
+  <div class="std-amenities">
+    <div style="max-width:1200px">
+      <div class="section-eyebrow">Studio Facilities</div>
+      <h2 class="section-title">Studio <em>Highlights</em></h2>
+      <div class="amenity-grid">
+        <div class="amenity-item"><div class="icon">🌳</div><span>Open-Air Garden Deck</span></div>
+        <div class="amenity-item"><div class="icon">🧂</div><span>Himalayan Salt Room</span></div>
+        <div class="amenity-item"><div class="icon">🛖</div><span>Private Session Pods</span></div>
+        <div class="amenity-item"><div class="icon">🔥</div><span>Infrared Sauna</span></div>
+        <div class="amenity-item"><div class="icon">🍵</div><span>Herbal Tea Lounge</span></div>
+        <div class="amenity-item"><div class="icon">🌊</div><span>Cold Plunge Pool</span></div>
+        <div class="amenity-item"><div class="icon">📚</div><span>Wellness Library</span></div>
+        <div class="amenity-item"><div class="icon">🧸</div><span>Kids Yoga Corner</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- Instagram — @sutra_himani for Sector 21A -->
+  <div class="std-insta" style="background:var(--dark)">
+    <div class="section-eyebrow">Follow Along</div>
+    <h2 class="section-title" style="margin-bottom:8px">Latest from <em>Instagram</em></h2>
+    <p style="font-size:14px;color:var(--gray-light);margin-bottom:0">See our garden sessions, sunrise classes and peaceful moments from Sector 21A.</p>
+    <div class="insta-embed-card" style="border-color:rgba(42,157,143,0.2)">
+      <div class="insta-card-header">
+        <div class="insta-card-header-left">
+          <div class="insta-avatar-ring"><div class="insta-avatar-inner">📸</div></div>
+          <div><div class="insta-handle-name">@sutra_himani</div><div class="insta-handle-sub">Sutra Studios · Yoga Sutra Studio</div></div>
+        </div>
+        <a class="insta-follow-btn" href="https://www.instagram.com/sutra_himani/" target="_blank" style="border-color:rgba(42,157,143,0.4);color:var(--teal)">Follow</a>
+      </div>
+      <div class="insta-embed-body" style="padding:16px 20px">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/sutra_himani/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:unset;padding:0;width:100%">
+          <div style="padding:16px">
+            <a href="https://www.instagram.com/sutra_himani/" target="_blank" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%">
+              <div style="display:flex;flex-direction:row;align-items:center"><div style="background-color:#F4F4F4;border-radius:50%;height:40px;margin-right:14px;width:40px"></div><div style="display:flex;flex-direction:column;flex-grow:1"><div style="background-color:#F4F4F4;border-radius:4px;height:14px;margin-bottom:6px;width:100px"></div><div style="background-color:#F4F4F4;border-radius:4px;height:14px;width:60px"></div></div></div>
+              <div style="padding:19% 0"></div>
+              <div style="display:block;height:50px;margin:0 auto 12px;width:50px">
+                <svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M56.81 0H3.19C1.43 0 0 1.43 0 3.19v53.62C0 58.57 1.43 60 3.19 60h53.62C58.57 60 60 58.57 60 56.81V3.19C60 1.43 58.57 0 56.81 0zM30 44.14c-7.79 0-14.14-6.35-14.14-14.14S22.21 15.86 30 15.86 44.14 22.21 44.14 30 37.79 44.14 30 44.14zm16.5-26.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="url(#ig_s21)"/><defs><linearGradient id="ig_s21" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs></svg>
+              </div>
+              <div style="padding-top:8px"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px">View this profile on Instagram</div></div>
+              <div style="padding:12.5% 0"></div>
+            </a>
+            <p style="margin:8px 0 0;padding:0 4px"><a href="https://www.instagram.com/sutra_himani/" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;text-decoration:none" target="_blank">sutra_himani</a> • Garden sessions, sunrise classes & serene moments from Sector 21A</p>
+          </div>
+        </blockquote>
+      </div>
+      <div class="insta-card-footer">
+        <a href="https://www.instagram.com/sutra_himani/" target="_blank" style="color:var(--teal)">
+          <svg class="insta-ig-logo" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig_f21" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig_f21)" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="url(#ig_f21)" stroke-width="1.8" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="url(#ig_f21)"/></svg>
+          Open @sutra_himani on Instagram ↗
+        </a>
+        <span style="font-size:11px;color:var(--gray)">Posts load automatically</span>
+      </div>
+    </div>
+  </div>
+  <div class="std-book-bar" style="background:var(--black)">
+    <div class="section-eyebrow" style="justify-content:center">Join Us</div>
+    <h2>Begin at <em>Sector 21A</em></h2>
+    <p>Your first class is completely free — no commitment, no pressure.</p>
+    <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20class%20at%20the%20Garden%20Studio%20Sector%2021A!" target="_blank" style="background:linear-gradient(135deg,var(--teal),#1a6b62)">💬 WhatsApp to Book Free Class</a>
+  </div>
+  <div class="page-footer-nav"><button onclick="goBackHome('studios')">← Back to Homepage</button></div>
+</div>
+
+<!-- ══════ INSTRUCTORS PAGE — Vertical Alternating Interactive ══════ -->
+<div id="page-instructors" class="page">
+  <div class="instructors-page">
+    <div class="instructors-hero-sect">
+      <div class="section-eyebrow" style="justify-content:center;display:flex">Meet the Team</div>
+      <h2 class="section-title">Our <em>Instructors</em></h2>
+      <p class="section-body" style="margin:0 auto;text-align:center;max-width:600px">Every instructor at Sutra Studios brings years of dedicated practice, deep expertise, and a genuine love for transformation. You're in exceptional hands.</p>
+    </div>
+
+    <div class="inst-list">
+
+      <!-- 1 — Himani -->
+      <div class="inst-card">
+        <div class="inst-photo-col">
+          <img src="Himani.webp" alt="Himani">
+          <div class="inst-photo-overlay"></div>
+        </div>
+        <div class="inst-body">
+          <span class="inst-num">01</span>
+          <div class="inst-role-badge gold">🌟 Founder & Lead Instructor</div>
+          <h2 class="inst-name"><em>Himani</em></h2>
+          <div class="inst-title-line">RYT-500 · Yoga Therapist · Wellness Coach</div>
+          <div class="inst-divider"></div>
+          <p class="inst-bio">With over 20 years of dedicated practice and teaching, Himani is one of India's most respected yoga instructors. Trained in the foothills of the Himalayas under masters of traditional Hatha and Ashtanga yoga, she brings a rare blend of ancient wisdom and modern therapeutic understanding.</p>
+          <p class="inst-bio">She has led sessions for 500+ participants at National International Yoga Day, conducted specialised workshops for the Indian Army, and designed corporate wellness programmes for leading organisations across India.</p>
+          <div class="inst-tags">
+            <span class="inst-tag">RYT-500</span><span class="inst-tag">Yoga Therapy</span><span class="inst-tag">Aerial Yoga</span><span class="inst-tag">Prenatal</span><span class="inst-tag">Dance Therapy</span><span class="inst-tag">Corporate Wellness</span>
+          </div>
+          <a class="inst-wa-btn" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20class%20with%20Himani!" target="_blank">💬 Book with Himani</a>
+        </div>
+      </div>
+
+      <!-- 2 — Priya -->
+      <div class="inst-card">
+        <div class="inst-photo-col">
+          <div class="inst-photo-placeholder">🧘‍♀️</div>
+          <div class="inst-photo-overlay"></div>
+        </div>
+        <div class="inst-body">
+          <span class="inst-num">02</span>
+          <div class="inst-role-badge teal">🧘 Senior Yoga Instructor</div>
+          <h2 class="inst-name"><em>Priya</em> Verma</h2>
+          <div class="inst-title-line">RYT-200 · Hatha · Aerial Contemporary Dance Specialist</div>
+          <div class="inst-divider"></div>
+          <p class="inst-bio">Priya brings a nurturing, precision-focused approach to her classes. Specialising in Hatha and Aerial Contemporary Dance, she has a particular gift for making beginners feel immediately at home while challenging advanced practitioners to go deeper.</p>
+          <p class="inst-bio">Trained in Rishikesh with 8 years of teaching experience, Priya's classes are known for their warm energy, clear alignment cues, and the sense of community she builds effortlessly with every group.</p>
+          <div class="inst-tags">
+            <span class="inst-tag t">RYT-200</span><span class="inst-tag t">Hatha</span><span class="inst-tag t">Aerial Contemporary Dance</span><span class="inst-tag t">Beginners</span><span class="inst-tag t">Kids Yoga</span>
+          </div>
+          <a class="inst-wa-btn" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20class%20with%20Priya!" target="_blank">💬 Book with Priya</a>
+        </div>
+      </div>
+
+      <!-- 3 — Kavya -->
+      <div class="inst-card">
+        <div class="inst-photo-col">
+          <div class="inst-photo-placeholder">🪁</div>
+          <div class="inst-photo-overlay"></div>
+        </div>
+        <div class="inst-body">
+          <span class="inst-num">03</span>
+          <div class="inst-role-badge purple">🪁 Aerial Yoga Specialist</div>
+          <h2 class="inst-name"><em>Kavya</em> Sharma</h2>
+          <div class="inst-title-line">Aerial Yoga Certified · Anti-Gravity Expert</div>
+          <div class="inst-divider"></div>
+          <p class="inst-bio">Kavya discovered aerial yoga after years of classical dance training and fell in love with the unique combination of strength, grace, and aerial freedom. She brings a dancer's sensitivity and an athlete's precision to every hammock session.</p>
+          <p class="inst-bio">Certified in Anti-Gravity Aerial Yoga and specialising in therapeutic aerial work for spinal decompression, Kavya has helped hundreds of students experience the transformative power of inverting safely and joyfully.</p>
+          <div class="inst-tags">
+            <span class="inst-tag p">Aerial Yoga</span><span class="inst-tag p">Anti-Gravity</span><span class="inst-tag p">Spine Therapy</span><span class="inst-tag p">Dance</span>
+          </div>
+          <a class="inst-wa-btn" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20an%20Aerial%20class%20with%20Kavya!" target="_blank" style="background:linear-gradient(135deg,#8B7BC9,#6a5aa8)">💬 Book with Kavya</a>
+        </div>
+      </div>
+
+      <!-- 4 — Aryan -->
+      <div class="inst-card">
+        <div class="inst-photo-col">
+          <div class="inst-photo-placeholder">🎭</div>
+          <div class="inst-photo-overlay"></div>
+        </div>
+        <div class="inst-body">
+          <span class="inst-num">04</span>
+          <div class="inst-role-badge rose">🎭 Movement & Wellness Therapist</div>
+          <h2 class="inst-name"><em>Aryan</em> Kapoor</h2>
+          <div class="inst-title-line">Dance Therapist · Somatic Movement · Meditation</div>
+          <div class="inst-divider"></div>
+          <p class="inst-bio">Aryan is a trained dance movement therapist and somatic practitioner with a background in psychology. His work sits at the intersection of body, emotion, and healing — creating safe spaces for profound personal transformation.</p>
+          <p class="inst-bio">He leads our Creative Movement, Emotional Release Workshops, and Guided Meditation programmes, and is particularly gifted at working with trauma, anxiety, and emotional blocks through gentle, embodied approaches.</p>
+          <div class="inst-tags">
+            <span class="inst-tag r">Dance Therapy</span><span class="inst-tag r">Somatic Movement</span><span class="inst-tag r">Meditation</span><span class="inst-tag r">Psychology</span>
+          </div>
+          <a class="inst-wa-btn" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20session%20with%20Aryan!" target="_blank" style="background:linear-gradient(135deg,#C4786A,#9a5548)">💬 Book with Aryan</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer-nav"><button onclick="showPage('home')">← Back to Homepage</button></div>
+</div>
+
+<!-- ══════ SCHEDULE PAGE ══════ -->
+<div id="page-schedule" class="page">
+  <div class="schedule-page">
+    <div class="schedule-hero">
+      <div class="section-eyebrow" style="justify-content:center;display:flex">Live Calendar</div>
+      <h2 class="section-title">Class <em>Schedule</em> & Events</h2>
+      <p class="section-body" style="margin:0 auto;text-align:center;max-width:580px">All upcoming classes, workshops, retreats and special events — updated in real time by Team Sutra. Book your spot on WhatsApp.</p>
+    </div>
+    <div class="schedule-body">
+      <div class="schedule-embed-wrap">
+        <!-- Steps to activate:
+             1. Go to calendar.google.com
+             2. Open Settings → Your calendar → Integrate calendar
+             3. Copy the embed src URL
+             4. Replace the src below -->
+        <iframe 
+  src="https://calendar.google.com/calendar/embed?src=REPLACE_WITH_YOUR_CALENDAR_ID%40group.calendar.google.com&ctz=Asia%2FKolkata&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH&bgcolor=%23161616&color=%23C9A84C" 
+  style="border: 0; background: transparent;" 
+  width="1100" 
+  height="600" 
+  frameborder="0" 
+  scrolling="no"
+  title="Sutra Studios Schedule">
+</iframe>
+<a href="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID" 
+   target="_blank" class="btn-primary">
+  📅 View Full Schedule
+</a>
+      </div>
+      
+      <div class="schedule-legend">
+        <div class="cal-tag"><div class="cal-dot" style="background:#C9A84C"></div>Yoga & Wellness</div>
+        <div class="cal-tag"><div class="cal-dot" style="background:#8B7BC9"></div>Meditation</div>
+        <div class="cal-tag"><div class="cal-dot" style="background:#2A9D8F"></div>Aerial Yoga</div>
+        <div class="cal-tag"><div class="cal-dot" style="background:#C4786A"></div>Therapeutic</div>
+        <div class="cal-tag"><div class="cal-dot" style="background:#E8C97A"></div>Workshops & Retreats</div>
+        <div class="cal-tag"><div class="cal-dot" style="background:#25D366"></div>Online Classes</div>
+      </div>
+      <!-- <div class="schedule-note">
+        <div class="icon">📋</div>
+        <p><strong>How to activate this calendar:</strong> Go to <strong>calendar.google.com</strong> → Settings (gear icon) → Select your studio calendar → "Integrate calendar" → Copy the embed code src URL → Replace <code>REPLACE_WITH_YOUR_CALENDAR_ID</code> in this file with that URL. Once done, all events Himani adds will appear here automatically. Then remove this note from the code.</p>
+      </div> -->
+      <div style="text-align:center;margin-top:40px">
+        <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20know%20about%20upcoming%20classes%20and%20events!" target="_blank" style="font-size:10px;padding:14px 28px">💬 Ask About Upcoming Events</a>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer-nav"><button onclick="showPage('home')">← Back to Homepage</button></div>
+</div>
+
+<!-- ══════ STUDENT OF THE MONTH PAGE ══════ -->
+<div id="page-sotm" class="page">
+  <div class="sotm-page">
+    <div class="sotm-hero-sect">
+      <div class="section-eyebrow" style="justify-content:center;display:flex">Monthly Spotlight</div>
+      <h2 class="section-title">Student of<br>the <em>Month</em></h2>
+      <p class="section-body" style="margin:0 auto;text-align:center;max-width:560px">Every month we celebrate a student who has shown extraordinary dedication, growth, and transformation at Sutra Studios.</p>
+    </div>
+    <div class="sotm-main">
+      <div class="sotm-feature">
+        <!-- Slide embed -->
+        <div class="sotm-slide-card">
+          <div class="sotm-slide-header">
+            <div class="sotm-slide-header-left">
+              <span class="sotm-trophy">🏆</span>
+              <span class="sotm-slide-title">Student of the Month</span>
+            </div>
+            <span class="sotm-month-badge">Updated Monthly</span>
+          </div>
+          <!-- Steps to activate:
+               1. Open Google Slides
+               2. File → Share → Publish to web → Embed tab
+               3. Copy the src URL from the iframe code
+               4. Replace REPLACE_WITH_YOUR_SLIDES_ID below -->
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQmkdiH-BoSV3Po7RJbcq1MR5fRBezVT1ObLDTQXy4oMDk7N0dJz6an3xF9YObINiYNR3XIYsg1zi3b/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+          <div class="sotm-slide-footer">
+            <!-- <span>🔄</span> -->
+            <!-- <span>Slide updates automatically when you edit your Google Slides presentation</span> -->
+          </div>
+        </div>
+
+        <!-- Info panel -->
+        <div class="sotm-info-panel">
+          <div class="sotm-eyebrow-badge">🏆 Monthly Spotlight</div>
+          <h2>Celebrating Our<br><em>Transformation Stars</em></h2>
+          <p>Every month we celebrate a student who has shown extraordinary dedication, growth, and transformation. Their journey inspires our entire community to go deeper, show up consistently, and trust the process.</p>
+          <p style="margin-bottom:0">Each spotlight features their personal story, the practice that transformed them, and words of wisdom for fellow students beginning their journey.</p>
+
+          <!-- <div class="sotm-guide" style="margin-top:28px">
+            <div class="sotm-guide-title">⚙️ How to Update Each Month</div>
+            <div class="sotm-steps">
+              <div class="sotm-step">
+                <div class="sotm-step-num">1</div>
+                <p>Open your <strong>Google Slides</strong> presentation (bookmark it for easy access)</p>
+              </div>
+              <div class="sotm-step">
+                <div class="sotm-step-num">2</div>
+                <p>Update the <strong>student's photo, name, quote</strong> and their practice on the slide</p>
+              </div>
+              <div class="sotm-step">
+                <div class="sotm-step-num">3</div>
+                <p><strong>Save</strong> — the website automatically shows the new slide within seconds ✅</p>
+              </div>
+              <div class="sotm-step">
+                <div class="sotm-step-num">4</div>
+                <p>No website editing needed — <strong>Himani can update this herself</strong> from her phone anytime</p>
+              </div>
+            </div> -->
+          </div>
+          <div style="margin-top:28px">
+            <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20nominate%20a%20student%20for%20Student%20of%20the%20Month!" target="_blank" style="font-size:10px;padding:13px 26px">💬 Nominate a Student</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why it matters section -->
+      <div class="sotm-nominees">
+        <div class="section-eyebrow">Why This Matters</div>
+        <h2 class="section-title">The Power of<br><em>Recognition</em></h2>
+        <div class="sotm-nominees-grid">
+          <div class="nominee-card">
+            <span class="nominee-emoji">🌱</span>
+            <h4>Inspires Others</h4>
+            <p>Seeing a real student's journey motivates the entire community to stay consistent and committed to their practice.</p>
+          </div>
+          <div class="nominee-card">
+            <span class="nominee-emoji">❤️</span>
+            <h4>Builds Community</h4>
+            <p>Recognition creates belonging. Students feel seen, valued, and part of something larger than themselves.</p>
+          </div>
+          <div class="nominee-card">
+            <span class="nominee-emoji">🏆</span>
+            <h4>Celebrates Growth</h4>
+            <p>Every transformation deserves to be honoured — big or small. This is Sutra's way of saying "we see you."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer-nav"><button onclick="showPage('home')">← Back to Homepage</button></div>
+</div>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Sutra%20Studios%21" target="_blank" title="Chat on WhatsApp">
+  💬
+  <span class="wa-tooltip">Book Free Class on WhatsApp</span>
+</a>
+<script>
+// PARTICLES
+const pc=document.getElementById("particles");
+if(pc){for(let i=0;i<30;i++){const p=document.createElement("div");p.className="particle";p.style.cssText="left:"+Math.random()*100+"%;width:"+(Math.random()*2.5+0.5)+"px;height:"+(Math.random()*2.5+0.5)+"px;animation-duration:"+(Math.random()*12+8)+"s;animation-delay:"+Math.random()*12+"s";pc.appendChild(p)}}
+
+// NAVBAR
+window.addEventListener("scroll",()=>{document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50)});
+
+// MOBILE MENU
+function toggleMobileMenu(){document.getElementById("hamburger").classList.toggle("open");document.getElementById("mobileMenu").classList.toggle("open")}
+function closeMobileMenu(){document.getElementById("hamburger").classList.remove("open");document.getElementById("mobileMenu").classList.remove("open")}
+
+// PAGE NAV — scroll restore
+const scrollHistory={};
+function showPage(page){
+  const cur=document.querySelector(".page.active");
+  if(cur&&cur.id==="page-home") scrollHistory["home"]=window.scrollY;
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("page-"+page).classList.add("active");
+  window.scrollTo({top:0,behavior:"instant"});
+  closeMobileMenu();
+  setTimeout(()=>{if(window.instgrm&&window.instgrm.Embeds)window.instgrm.Embeds.process()},600);
+}
+function goBackHome(section){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("page-home").classList.add("active");
+  closeMobileMenu();
+  setTimeout(()=>{
+    const saved=scrollHistory["home"];
+    if(saved&&saved>100){window.scrollTo({top:saved,behavior:"smooth"})}
+    else{const el=document.getElementById(section);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
+  },80);
+}
+function navTo(id){
+  if(!document.getElementById("page-home").classList.contains("active"))showPage("home");
+  setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})},80);
+}
+
+// TESTIMONIALS
+let currentT=0;
+const tItems=document.querySelectorAll(".testimonial-item");
+const tDotsEl=document.getElementById("tDots");
+let tTimer;
+function buildDots(){if(!tDotsEl)return;tItems.forEach((_,i)=>{const d=document.createElement("div");d.className="t-dot"+(i===0?" active":"");d.onclick=()=>goToT(i);tDotsEl.appendChild(d)})}
+buildDots();
+function goToT(n){tItems[currentT].classList.remove("active");tDotsEl.querySelectorAll(".t-dot")[currentT].classList.remove("active");currentT=(n+tItems.length)%tItems.length;tItems[currentT].classList.add("active");tDotsEl.querySelectorAll(".t-dot")[currentT].classList.add("active");resetTimer()}
+function nextT(){goToT(currentT+1)}function prevT(){goToT(currentT-1)}
+function resetTimer(){clearInterval(tTimer);tTimer=setInterval(()=>goToT(currentT+1),5500)}
+resetTimer();
+
+// CAROUSEL
+const carouselImages=[
+  {src:"aerial yoga.webp",name:"Aerial Yoga"},{src:"2.webp",name:"Practice"},{src:"3.webp",name:"Aerial"},
+  {src:"4.webp",name:"Aerial"},{src:"5.webp",name:"Session"},{src:"6.webp",name:"Class"},
+  {src:"7.webp",name:"Movement"},{src:"8.webp",name:"Wellness"}
+];
+let carouselOffset=0,carouselVisibleCount=4;
+function getVisibleCount(){const w=window.innerWidth;if(w<=480)return 1;if(w<=640)return 2;if(w<=1024)return 3;return 4}
+function buildCarousel(){
+  const track=document.getElementById("carouselTrack");
+  if(!track)return;
+  track.innerHTML="";
+  // No upload slot on frontend
+  // Images
+  carouselImages.forEach(img=>{
+    const s=document.createElement("div");s.className="carousel-slide";
+    const i=document.createElement("img");i.src=img.src;i.alt=img.name;
+    s.appendChild(i);track.appendChild(s);
+  });
+  carouselOffset=0;updateCarouselPosition();
+}
+
+function updateCarouselPosition(){
+  const track=document.getElementById("carouselTrack");
+  if(!track)return;
+  carouselVisibleCount=getVisibleCount();
+  const sw=track.parentElement.offsetWidth/carouselVisibleCount;
+  const gap=16,total=track.children.length;
+  const maxOff=Math.max(0,total-carouselVisibleCount);
+  carouselOffset=Math.min(carouselOffset,maxOff);
+  track.style.transform=`translateX(-${carouselOffset*(sw+gap)}px)`;
+}
+document.getElementById("carouselNext").addEventListener("click",()=>{
+  const track=document.getElementById("carouselTrack");
+  const maxOff=Math.max(0,track.children.length-getVisibleCount());
+  carouselOffset=Math.min(carouselOffset+1,maxOff);updateCarouselPosition();
+});
+document.getElementById("carouselPrev").addEventListener("click",()=>{
+  carouselOffset=Math.max(0,carouselOffset-1);updateCarouselPosition();
+});
+window.addEventListener("resize",updateCarouselPosition);
+buildCarousel();
+
+// INTERSECTION OBSERVER
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.opacity="1"})},{threshold:0.1});
+document.querySelectorAll(".problem-card,.diff-card,.service-card,.benefit-card,.offering-card,.inst-card,.nominee-card").forEach(el=>{
+  el.style.opacity="0";el.style.transition="opacity 0.6s ease";obs.observe(el);
+});
+</script>
+<script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>

@@ -5422,6 +5422,420 @@
         </div>
       </div>
     </div>
+
+    <!-- ══ STUDIO GALLERY — SECTOR 17 (FIXED) ══ -->
+<!-- Paste this ABOVE std-book-bar in page-sector17 -->
+
+<style>
+/* ── Gallery Grid ── */
+.sg17-section{padding:80px 48px;background:var(--black)}
+.sg17-grid{
+  display:grid;
+  gap:4px;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:200px;
+}
+.sg17-item{position:relative;overflow:hidden;cursor:pointer;background:#111;display:block}
+.sg17-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1),filter .4s}
+.sg17-item:hover img{transform:scale(1.08);filter:brightness(.72)}
+
+/* grid placement */
+.sg17-item:nth-child(1){grid-column:span 5;grid-row:span 2}
+.sg17-item:nth-child(2){grid-column:span 4;grid-row:span 1}
+.sg17-item:nth-child(3){grid-column:span 3;grid-row:span 1}
+.sg17-item:nth-child(4){grid-column:span 4;grid-row:span 1}
+.sg17-item:nth-child(5){grid-column:span 3;grid-row:span 2}
+.sg17-item:nth-child(6){grid-column:span 4;grid-row:span 1}
+.sg17-item:nth-child(7){grid-column:span 5;grid-row:span 1}
+.sg17-item:nth-child(8){grid-column:span 4;grid-row:span 1}
+
+/* hover overlay */
+.sg17-hover{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,8,.88) 0%,transparent 55%);
+  opacity:0;transition:opacity .35s;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:14px 13px
+}
+.sg17-item:hover .sg17-hover{opacity:1}
+.sg17-cat{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#2A9D8F;margin-bottom:5px}
+.sg17-name{font-family:"Cormorant Garamond",serif;font-size:15px;font-style:italic;color:#FAF8F4;font-weight:300}
+
+/* corner brackets */
+.sg17-tl,.sg17-br{position:absolute;width:16px;height:16px;opacity:0;transition:opacity .3s}
+.sg17-tl{top:0;left:0;border-top:1px solid #C9A84C;border-left:1px solid #C9A84C}
+.sg17-br{bottom:0;right:0;border-bottom:1px solid #C9A84C;border-right:1px solid #C9A84C}
+.sg17-item:hover .sg17-tl,.sg17-item:hover .sg17-br{opacity:1}
+
+/* ── Carousel ── */
+.sg17-car-wrap{margin-top:44px}
+.sg17-car-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.sg17-car-title{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:300;color:var(--white)}
+.sg17-car-title em{font-style:italic;color:var(--gold)}
+.sg17-arrows{display:flex;gap:10px}
+.sg17-arr{
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.08);
+  color:var(--gold);font-size:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .25s,background .25s;flex-shrink:0
+}
+.sg17-arr:hover{border-color:var(--gold);background:rgba(201,168,76,.2)}
+.sg17-car-outer{overflow:hidden;border-radius:6px;position:relative}
+.sg17-car-fade-l,.sg17-car-fade-r{position:absolute;top:0;bottom:0;width:50px;z-index:2;pointer-events:none}
+.sg17-car-fade-l{left:0;background:linear-gradient(to right,var(--black),transparent)}
+.sg17-car-fade-r{right:0;background:linear-gradient(to left,var(--black),transparent)}
+.sg17-car-track{display:flex;gap:10px;transition:transform .48s cubic-bezier(.4,0,.2,1)}
+.sg17-slide{
+  flex:0 0 0;height:110px;border-radius:6px;overflow:hidden;
+  border:1px solid rgba(201,168,76,.08);cursor:pointer;
+  position:relative;transition:border-color .25s,transform .25s;min-width:0
+}
+.sg17-slide:hover{border-color:rgba(201,168,76,.4);transform:translateY(-3px)}
+.sg17-slide img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.sg17-slide:hover img{transform:scale(1.07)}
+.sg17-slide-label{
+  position:absolute;bottom:0;left:0;right:0;padding:6px 8px;
+  background:linear-gradient(to top,rgba(8,8,8,.9),transparent);
+  font-size:8px;letter-spacing:1.5px;color:rgba(250,248,244,.55);
+  opacity:0;transition:opacity .3s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.sg17-slide:hover .sg17-slide-label{opacity:1}
+.sg17-dots-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px}
+.sg17-dots{display:flex;gap:7px;align-items:center}
+.sg17-dot{width:20px;height:2px;background:rgba(201,168,76,.2);cursor:pointer;transition:all .3s;border-radius:2px}
+.sg17-dot.active{background:var(--gold);width:34px}
+
+/* ── CTA ── */
+.sg17-cta{
+  margin-top:52px;position:relative;padding:46px 32px;
+  border:1px solid rgba(201,168,76,.15);border-radius:2px;text-align:center;overflow:hidden
+}
+.sg17-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,#C9A84C 35%,#2A9D8F 65%,transparent)}
+.sg17-cta::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.2),transparent)}
+.sg17-cta-tl,.sg17-cta-tr,.sg17-cta-bl,.sg17-cta-br{position:absolute;width:14px;height:14px}
+.sg17-cta-tl{top:-1px;left:-1px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.sg17-cta-tr{top:-1px;right:-1px;border-top:1px solid var(--gold);border-right:1px solid var(--gold)}
+.sg17-cta-bl{bottom:-1px;left:-1px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold)}
+.sg17-cta-br{bottom:-1px;right:-1px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.sg17-cta-ey{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.sg17-cta h3{font-family:"Cormorant Garamond",serif;font-size:clamp(22px,3vw,30px);font-weight:300;color:var(--white);margin-bottom:8px}
+.sg17-cta h3 em{font-style:italic;color:var(--gold)}
+.sg17-cta p{font-size:12px;color:rgba(250,248,244,.35);letter-spacing:.4px;margin-bottom:24px}
+.sg17-cta-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.sg17-cta-note{margin-top:13px;font-size:11px;color:rgba(250,248,244,.2)}
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+
+/* Tablet: 640–960px */
+@media(max-width:960px){
+  .sg17-section{padding:70px 28px}
+  .sg17-grid{
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:160px
+  }
+  .sg17-item:nth-child(1){grid-column:span 4;grid-row:span 2}
+  .sg17-item:nth-child(2){grid-column:span 2;grid-row:span 1}
+  .sg17-item:nth-child(3){grid-column:span 2;grid-row:span 1}
+  .sg17-item:nth-child(4){grid-column:span 3;grid-row:span 1}
+  .sg17-item:nth-child(5){grid-column:span 3;grid-row:span 2}
+  .sg17-item:nth-child(6){grid-column:span 3;grid-row:span 1}
+  .sg17-item:nth-child(7){grid-column:span 3;grid-row:span 1}
+  .sg17-item:nth-child(8){grid-column:span 3;grid-row:span 1}
+}
+
+/* Mobile: below 640px — simple 2-col */
+@media(max-width:639px){
+  .sg17-section{padding:56px 16px}
+
+  .sg17-grid{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:140px;
+    gap:3px
+  }
+  /* reset all placements */
+  .sg17-item:nth-child(1),
+  .sg17-item:nth-child(2),
+  .sg17-item:nth-child(3),
+  .sg17-item:nth-child(4),
+  .sg17-item:nth-child(5),
+  .sg17-item:nth-child(6),
+  .sg17-item:nth-child(7),
+  .sg17-item:nth-child(8){
+    grid-column:span 1;
+    grid-row:span 1
+  }
+  /* hero — full width, taller */
+  .sg17-item:nth-child(1){grid-column:span 2;height:220px}
+
+  /* always show labels on mobile (no hover) */
+  .sg17-hover{opacity:1;background:linear-gradient(to top,rgba(8,8,8,.78) 0%,transparent 50%)}
+  .sg17-tl,.sg17-br{opacity:.5}
+  .sg17-name{font-size:13px}
+  .sg17-cat{font-size:7px}
+
+  /* carousel */
+  .sg17-car-fade-l,.sg17-car-fade-r{width:24px}
+  .sg17-slide{height:96px}
+  .sg17-cta{padding:32px 16px}
+  .sg17-cta-btns{flex-direction:column;align-items:stretch}
+  .sg17-cta-btns a,.sg17-cta-btns button{justify-content:center;width:100%}
+}
+
+@media(max-width:380px){
+  .sg17-grid{grid-auto-rows:120px}
+  .sg17-item:nth-child(1){height:180px}
+}
+</style>
+
+<div class="sg17-section">
+  <div style="max-width:1200px;margin:0 auto">
+
+    <div class="section-eyebrow">Photo Gallery</div>
+    <h2 class="section-title">Moments at <em>Sector 17</em></h2>
+
+    <!-- 8-cell masonry grid -->
+    <div class="sg17-grid">
+
+      <!-- 1 Hero 5×2 -->
+      <div class="sg17-item">
+        <img src="sec17.1.webp" alt="Morning Flow">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <!-- <div class="sg17-cat">Foundation</div>
+          <div class="sg17-name">Morning Flow</div> -->
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="sg17-item">
+        <img src="sec17.2.webp" alt="Aerial Yoga">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <!-- <div class="sg17-cat">Signature</div>
+          <div class="sg17-name">Aerial Yoga</div> -->
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="sg17-item">
+        <img src="sec17.3.webp" alt="Therapy">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <!-- <div class="sg17-cat">Therapeutic</div>
+          <div class="sg17-name">Healing Session</div> -->
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="sg17-item">
+        <img src="sec17.4.webp" alt="Creative Movement">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <!-- <div class="sg17-cat">Creative</div>
+          <div class="sg17-name">Dance Movement</div> -->
+        </div>
+      </div>
+
+      <!-- 5 tall 3×2 -->
+      <div class="sg17-item">
+        <img src="sec17.6.webp" alt="Dance">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <!-- <div class="sg17-cat">Movement</div>
+          <div class="sg17-name">Dance & Flow</div> -->
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="sg17-item">
+        <img src="sec17.7.webp" alt="Yoga Class">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <!-- <div class="sg17-cat">Community</div>
+          <div class="sg17-name">Group Class</div> -->
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="sg17-item">
+        <img src="sec17.8.webp" alt="Anti Ageing Yoga">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <!-- <div class="sg17-cat">Specialised</div>
+          <div class="sg17-name">Anti Ageing Yoga</div> -->
+        </div>
+      </div>
+
+      <!-- 8 — fills the gap on the right of last row -->
+      <!-- <div class="sg17-item">
+        <img src="137A8327.webp" alt="Studio Space">
+        <div class="sg17-tl"></div><div class="sg17-br"></div>
+        <div class="sg17-hover">
+          <div class="sg17-cat">Studio</div>
+          <div class="sg17-name">Sacred Space</div>
+        </div>
+      </div>-->
+
+    </div> 
+    <!-- /grid -->
+
+    <!-- Carousel -->
+    <!-- <div class="sg17-car-wrap">
+      <div class="sg17-car-head">
+        <h3 class="sg17-car-title">More <em>Moments</em></h3>
+        <div class="sg17-arrows">
+          <button class="sg17-arr" id="sg17ArL">&#8592;</button>
+          <button class="sg17-arr" id="sg17ArR">&#8594;</button>
+        </div>
+      </div>
+      <div class="sg17-car-outer">
+        <div class="sg17-car-fade-l"></div>
+        <div class="sg17-car-fade-r"></div>
+        <div class="sg17-car-track" id="sg17Track">
+          <div class="sg17-slide"><img src="3.webp" alt="Aerial"><div class="sg17-slide-label">Aerial Hammock</div></div>
+          <div class="sg17-slide"><img src="4.webp" alt="Inversion"><div class="sg17-slide-label">Aerial Inversion</div></div>
+          <div class="sg17-slide"><img src="6.webp" alt="Class"><div class="sg17-slide-label">Group Class</div></div>
+          <div class="sg17-slide"><img src="yoga2.webp" alt="Yoga"><div class="sg17-slide-label">Hatha Practice</div></div>
+          <div class="sg17-slide"><img src="yoga3.webp" alt="Meditation"><div class="sg17-slide-label">Meditation</div></div>
+          <div class="sg17-slide"><img src="therapy1.webp" alt="Therapy"><div class="sg17-slide-label">PCOS Therapy</div></div>
+          <div class="sg17-slide"><img src="creative1.webp" alt="Movement"><div class="sg17-slide-label">Creative Movement</div></div>
+          <div class="sg17-slide"><img src="yoga6.webp" alt="Prenatal"><div class="sg17-slide-label">Prenatal Yoga</div></div>
+          <div class="sg17-slide"><img src="2.webp" alt="Aerial"><div class="sg17-slide-label">Silk Stretch</div></div>
+          <div class="sg17-slide"><img src="workshop.webp" alt="Workshop"><div class="sg17-slide-label">Workshop</div></div>
+        </div>
+      </div>
+      <div class="sg17-dots-row">
+        <button class="sg17-arr" id="sg17ArL2">&#8592;</button>
+        <div class="sg17-dots" id="sg17Dots"></div>
+        <button class="sg17-arr" id="sg17ArR2">&#8594;</button>
+      </div>
+    </div> -->
+
+    <!-- CTA -->
+    <!-- <div class="sg17-cta">
+      <div class="sg17-cta-tl"></div><div class="sg17-cta-tr"></div>
+      <div class="sg17-cta-bl"></div><div class="sg17-cta-br"></div>
+      <div class="sg17-cta-ey">First Class Free</div>
+      <h3>Come <em>Feel It</em> in Person</h3>
+      <p>No experience needed &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; We respond within 1 hour</p>
+      <div class="sg17-cta-btns">
+        <a class="btn-wa" href="https://wa.me/919891525854?text=Hi%2C+I%27d+like+to+book+a+free+class+at+Sector+17!" target="_blank">💬 Book Free Class</a>
+        <button class="btn-outline" onclick="goBackHome('studios')">← Explore Studios</button>
+      </div>
+      <p class="sg17-cta-note">🎁 Your first class is 100% free</p>
+    </div> -->
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var track  = document.getElementById('sg17Track');
+  var dotsEl = document.getElementById('sg17Dots');
+  var idx    = 0;
+
+  function vis(){
+    var w = window.innerWidth;
+    if(w < 400) return 2;
+    if(w < 540) return 3;
+    if(w < 768) return 3;
+    if(w < 1024) return 4;
+    return 5;
+  }
+
+  function buildDots(){
+    if(!dotsEl || !track) return;
+    var v     = vis();
+    var pages = Math.max(1, Math.ceil(track.children.length / v));
+    dotsEl.innerHTML = '';
+    for(var i = 0; i < pages; i++){
+      var d = document.createElement('div');
+      d.className = 'sg17-dot' + (i === 0 ? ' active' : '');
+      (function(pi){ d.addEventListener('click', function(){ goTo(pi); }); })(i);
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function update(){
+    if(!track) return;
+    var v   = vis();
+    var gap = 10;
+    var ow  = track.parentElement.offsetWidth;
+    var sw  = Math.floor((ow - (v - 1) * gap) / v);
+    Array.from(track.children).forEach(function(s){
+      s.style.flex     = '0 0 ' + sw + 'px';
+      s.style.minWidth = '0';
+      s.style.width    = sw + 'px';
+    });
+    var maxIdx = Math.max(0, track.children.length - v);
+    if(idx > maxIdx) idx = maxIdx;
+    track.style.transform = 'translateX(-' + (idx * (sw + gap)) + 'px)';
+    if(dotsEl){
+      var curPage = Math.round(idx / v);
+      Array.from(dotsEl.children).forEach(function(d, i){
+        d.classList.toggle('active', i === curPage);
+      });
+    }
+  }
+
+  function next(){
+    var v      = vis();
+    var maxIdx = Math.max(0, track.children.length - v);
+    idx = idx + v > maxIdx ? 0 : idx + v;
+    update();
+  }
+  function prev(){
+    var v      = vis();
+    var maxIdx = Math.max(0, track.children.length - v);
+    idx = idx - v < 0 ? maxIdx : idx - v;
+    update();
+  }
+  function goTo(page){
+    var v      = vis();
+    var maxIdx = Math.max(0, track.children.length - v);
+    idx = Math.min(page * v, maxIdx);
+    update();
+  }
+
+  ['sg17ArL','sg17ArL2'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('click', prev);
+  });
+  ['sg17ArR','sg17ArR2'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('click', next);
+  });
+
+  /* touch swipe */
+  var tx = 0;
+  if(track){
+    track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend',   function(e){
+      var diff = tx - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 36){ diff > 0 ? next() : prev(); }
+    }, {passive:true});
+  }
+
+  window.addEventListener('resize', function(){ buildDots(); update(); });
+
+  buildDots();
+  update();
+
+  /* re-calc when SPA shows this page */
+  var orig = window.showPage;
+  if(typeof orig === 'function'){
+    window.showPage = function(pid){
+      orig(pid);
+      if(pid === 'sector17'){
+        setTimeout(function(){ buildDots(); update(); }, 100);
+      }
+    };
+  }
+})();
+</script>
+
     <div class="std-book-bar">
       <div class="section-eyebrow" style="justify-content:center">Join Us</div>
       <h2>Begin at <em>Yoga Sutra Studio</em></h2>
@@ -5590,6 +6004,202 @@
         </div>
       </div>
     </div>
+
+<!-- ══ STUDIO GALLERY — SECTOR 21A ══ -->
+<!-- Paste this ABOVE std-book-bar in page-sector21 -->
+
+<style>
+/* ── Gallery Grid ── */
+.sg21-section{padding:80px 48px;background:var(--dark)}
+.sg21-grid{
+  display:grid;
+  gap:4px;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:200px;
+}
+.sg21-item{position:relative;overflow:hidden;cursor:pointer;background:#111;display:block}
+.sg21-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1),filter .4s}
+.sg21-item:hover img{transform:scale(1.08);filter:brightness(.72)}
+
+/* grid placement */
+.sg21-item:nth-child(1){grid-column:span 5;grid-row:span 2}
+.sg21-item:nth-child(2){grid-column:span 4;grid-row:span 1}
+.sg21-item:nth-child(3){grid-column:span 3;grid-row:span 1}
+.sg21-item:nth-child(4){grid-column:span 4;grid-row:span 1}
+.sg21-item:nth-child(5){grid-column:span 3;grid-row:span 2}
+.sg21-item:nth-child(6){grid-column:span 4;grid-row:span 1}
+.sg21-item:nth-child(7){grid-column:span 5;grid-row:span 1}
+.sg21-item:nth-child(8){grid-column:span 4;grid-row:span 1}
+
+/* hover overlay */
+.sg21-hover{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,8,.88) 0%,transparent 55%);
+  opacity:0;transition:opacity .35s;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:14px 13px
+}
+.sg21-item:hover .sg21-hover{opacity:1}
+.sg21-cat{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#2A9D8F;margin-bottom:5px}
+.sg21-name{font-family:"Cormorant Garamond",serif;font-size:15px;font-style:italic;color:#FAF8F4;font-weight:300}
+
+/* corner brackets — teal accent for 21A */
+.sg21-tl,.sg21-br{position:absolute;width:16px;height:16px;opacity:0;transition:opacity .3s}
+.sg21-tl{top:0;left:0;border-top:1px solid #2A9D8F;border-left:1px solid #2A9D8F}
+.sg21-br{bottom:0;right:0;border-bottom:1px solid #2A9D8F;border-right:1px solid #2A9D8F}
+.sg21-item:hover .sg21-tl,.sg21-item:hover .sg21-br{opacity:1}
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+
+/* Tablet: 640–960px */
+@media(max-width:960px){
+  .sg21-section{padding:70px 28px}
+  .sg21-grid{
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:160px
+  }
+  .sg21-item:nth-child(1){grid-column:span 4;grid-row:span 2}
+  .sg21-item:nth-child(2){grid-column:span 2;grid-row:span 1}
+  .sg21-item:nth-child(3){grid-column:span 2;grid-row:span 1}
+  .sg21-item:nth-child(4){grid-column:span 3;grid-row:span 1}
+  .sg21-item:nth-child(5){grid-column:span 3;grid-row:span 2}
+  .sg21-item:nth-child(6){grid-column:span 3;grid-row:span 1}
+  .sg21-item:nth-child(7){grid-column:span 3;grid-row:span 1}
+  .sg21-item:nth-child(8){grid-column:span 3;grid-row:span 1}
+}
+
+/* Mobile: below 640px */
+@media(max-width:639px){
+  .sg21-section{padding:56px 16px}
+
+  .sg21-grid{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:140px;
+    gap:3px
+  }
+  /* reset all placements */
+  .sg21-item:nth-child(1),
+  .sg21-item:nth-child(2),
+  .sg21-item:nth-child(3),
+  .sg21-item:nth-child(4),
+  .sg21-item:nth-child(5),
+  .sg21-item:nth-child(6),
+  .sg21-item:nth-child(7),
+  .sg21-item:nth-child(8){
+    grid-column:span 1;
+    grid-row:span 1
+  }
+  /* hero — full width, taller */
+  .sg21-item:nth-child(1){grid-column:span 2;height:220px}
+
+  /* always show labels on mobile */
+  .sg21-hover{opacity:1;background:linear-gradient(to top,rgba(8,8,8,.78) 0%,transparent 50%)}
+  .sg21-tl,.sg21-br{opacity:.5}
+  .sg21-name{font-size:13px}
+  .sg21-cat{font-size:7px}
+}
+
+@media(max-width:380px){
+  .sg21-grid{grid-auto-rows:120px}
+  .sg21-item:nth-child(1){height:180px}
+}
+</style>
+
+<div class="sg21-section">
+  <div style="max-width:1200px;margin:0 auto">
+
+    <div class="section-eyebrow">Photo Gallery</div>
+    <h2 class="section-title">Moments at <em>Sector 21A</em></h2>
+
+    <div class="sg21-grid">
+
+      <!-- 1 Hero 5×2 -->
+      <div class="sg21-item">
+        <img src="sector21A image homepage.webp" alt="Sector 21A Studio">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+          <!-- <div class="sg21-cat">Our Space</div>
+          <div class="sg21-name">Garden Studio</div> -->
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="sg21-item">
+        <img src="aerial yoga.webp" alt="Aerial Yoga">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+          <!-- <div class="sg21-cat">Signature</div>
+          <div class="sg21-name">Aerial Yoga</div> -->
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="sg21-item">
+        <img src="morning bliss.webp" alt="Morning Practice">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+          <!-- <div class="sg21-cat">Foundation</div>
+          <div class="sg21-name">Morning Bliss</div> -->
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="sg21-item">
+        <img src="7.webp" alt="Therapy">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+          <!-- <div class="sg21-cat">Therapeutic</div>
+          <div class="sg21-name">Healing Session</div> -->
+        </div>
+      </div>
+
+      <!-- 5 tall 3×2 -->
+      <div class="sg21-item">
+        <img src="creative.webp" alt="Creative Movement">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+           <!-- <div class="sg21-cat">Creative</div>
+          <div class="sg21-name">Dance Movement</div> -->
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="sg21-item">
+        <img src="yoga1.webp" alt="Yoga Class">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+          <!-- <div class="sg21-cat">Community</div>
+          <div class="sg21-name">Group Practice</div> -->
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="sg21-item">
+        <img src="Arjuncarousel5.webp" alt="Dance">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+           <!-- <div class="sg21-cat">Outdoor</div>
+          <div class="sg21-name">Garden Deck Yoga</div> -->
+        </div>
+      </div>
+
+      <!-- 8 — fills the bottom-right gap -->
+      <!-- <div class="sg21-item">
+        <img src="yoga5.webp" alt="Anti Ageing Yoga">
+        <div class="sg21-tl"></div><div class="sg21-br"></div>
+        <div class="sg21-hover">
+          <div class="sg21-cat">Specialised</div>
+          <div class="sg21-name">Anti Ageing Yoga</div>
+        </div>
+      </div> -->
+
+    </div>
+    <!-- /grid -->
+
+  </div>
+</div>
+
     <div class="std-book-bar" style="background:var(--black)">
       <div class="section-eyebrow" style="justify-content:center">Join Us</div>
       <h2>Begin at <em>Sector 21A</em></h2>
@@ -6187,8 +6797,8 @@
             <div class="inst-title-new">Meditation Guide · Consciousness Explorer</div>
             <div class="inst-divider-new"></div>
             <div class="inst-bio-wrap-new collapsed">
-              <p class="inst-bio-new">For nearly a decade, Arjun has immersed himself in the study and practice of meditation, undertaking a personal quest to understand the deeper dimensions of consciousness, self-awareness, and inner transformation.</p>
-              <p class="inst-bio-new">At Sutra Studios, Arjun's mission is to help people rediscover the quiet centre that already exists within them. Through guided meditation, reflective inquiry, and practical insights drawn from multiple traditions — including Sivananda, Osho, and Vipassana — he creates a space grounded in simple truth: that beneath the layers of stress and distraction, every individual possesses an innate capacity for peace.</p>
+              <p class="inst-bio-new">For nearly a decade, Arjun has been deeply immersed in the study and practice of meditation and yoga, undertaking a personal quest to explore the deeper dimensions of consciousness, self-awareness, and inner transformation.</p>
+              <p class="inst-bio-new">At Sutra Studios, his mission is to help people rediscover the quiet centre that already exists within them. Through Hatha Yoga, guided meditation that gradually opens into an experience of unstructured awareness, and practical insights drawn from multiple traditions—including Sivananda, Osho, and Vipassana—he creates a space rooted in a simple yet profound truth: beneath the layers of stress, conditioning, and distraction, every individual possesses an innate capacity for peace.</p>
             </div>
             <button class="inst-read-more-new" onclick="toggleInstBioNew(this)">Read More ↓</button>
             <div class="inst-tags-new">

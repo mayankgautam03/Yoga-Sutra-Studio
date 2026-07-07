@@ -547,7 +547,7 @@
     }
 
     .hero-eyebrow {
-      font-size:18px;
+      font-size:22px;
       letter-spacing: 6px;
       text-transform: uppercase;
       color: var(--teal);
@@ -940,6 +940,41 @@
     .service-card:hover .service-icon-wrap {
       background: rgba(201, 168, 76, 0.2);
       border-color: var(--gold)
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--card-bg);
+      background-size: cover;
+      background-position: center;
+      opacity: 1;
+      z-index: 0;
+      transition: opacity 0.4s ease, transform 0.6s ease;
+      transform: scale(1.02)
+    }
+
+    .service-card:hover::before {
+      opacity: 0.5;
+      transform: scale(1.06)
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(165deg, rgba(15, 15, 15, 0.9) 0%, rgba(8, 8, 8, 0.96) 100%);
+      z-index: 1
+    }
+
+    .service-card-inner {
+      position: relative;
+      z-index: 2
+    }
+
+    .service-badge {
+      z-index: 3
     }
 
     .service-card h3 {
@@ -3606,7 +3641,7 @@
             There is a practice here for every body.</p>
         </div>
         <div class="services-grid">
-          <div class="service-card" onclick="showPage('svc-yoga')">
+          <div class="service-card" onclick="showPage('svc-yoga')" style="--card-bg:url('137A8327.webp')">
             <div class="service-card-inner">
               <div class="service-tag">Foundation</div>
               <div class="service-icon-wrap">🧘</div>
@@ -3615,7 +3650,7 @@
                 precision, warmth, and authenticity.</p><button class="service-link">Explore Classes →</button>
             </div>
           </div>
-          <div class="service-card" onclick="showPage('svc-meditation')">
+          <div class="service-card" onclick="showPage('svc-meditation')" style="--card-bg:url('meditation cover.webp')">
             <div class="service-card-inner">
               <div class="service-tag" style="color:#8B7BC9">Mindfulness</div>
               <div class="service-icon-wrap"
@@ -3626,7 +3661,7 @@
                 →</button>
             </div>
           </div>
-          <div class="service-card aerial" onclick="showPage('svc-aerial')">
+          <div class="service-card aerial" onclick="showPage('svc-aerial')" style="--card-bg:url('aerial cover.webp')">
             <div class="service-badge">Rare · Unique</div>
             <div class="service-card-inner">
               <div class="service-tag">Signature</div>
@@ -3637,7 +3672,7 @@
                 style="color:var(--teal)">Explore Aerial →</button>
             </div>
           </div>
-          <div class="service-card therapy" onclick="showPage('svc-therapy')">
+          <div class="service-card therapy" onclick="showPage('svc-therapy')" style="--card-bg:url('wellness.webp')">
             <div class="service-card-inner">
               <div class="service-tag">Therapeutic</div>
               <div class="service-icon-wrap" style="font-size:22px">💚</div>
@@ -3647,7 +3682,7 @@
                 Therapy →</button>
             </div>
           </div>
-          <div class="service-card" onclick="showPage('svc-movement')">
+          <div class="service-card" onclick="showPage('svc-movement')" style="--card-bg:url('creative.webp')">
             <div class="service-card-inner">
               <div class="service-tag">Creative</div>
               <div class="service-icon-wrap">🎭</div>
@@ -3656,7 +3691,7 @@
                 body already holds.</p><button class="service-link">Explore Movement →</button>
             </div>
           </div>
-          <div class="service-card" onclick="showPage('svc-workshops')">
+          <div class="service-card" onclick="showPage('svc-workshops')" style="--card-bg:url('workshop.webp')">
             <div class="service-card-inner">
               <div class="service-tag">Events</div>
               <div class="service-icon-wrap">✨</div>
@@ -3665,7 +3700,7 @@
                 groups and organisations.</p><button class="service-link">View Workshops →</button>
             </div>
           </div>
-          <div class="service-card aerial" onclick="showPage('svc-online')">
+          <div class="service-card aerial" onclick="showPage('svc-online')" style="--card-bg:url('online (2).webp')">
             <div class="service-card-inner">
               <div class="service-tag">Flexible</div>
               <div class="service-icon-wrap" style="font-size:22px">💻</div>

@@ -4,21 +4,24 @@
 <head>
 
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KNWCJS84');</script>
-<!-- End Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KNWCJS84');</script>
+  <!-- End Google Tag Manager -->
 
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sutra Studios — Yoga · Aerial Yoga · Creative Movement</title>
 
-<link rel="icon" type="image/png" href="Sutra studio logo.png">
-<link rel="shortcut icon" type="image/png" href="Sutra studio logo.png">
-<link rel="apple-touch-icon" href="Sutra studio logo.png">
+  <link rel="icon" type="image/png" href="Sutra studio logo.png">
+  <link rel="shortcut icon" type="image/png" href="Sutra studio logo.png">
+  <link rel="apple-touch-icon" href="Sutra studio logo.png">
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
@@ -246,6 +249,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transition: transform 0.3s, box-shadow 0.3s !important
     }
 
+    .btn-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 34px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-call:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(201, 168, 76, 0.25);
+}
+
     .btn-wa-nav:hover {
       transform: translateY(-2px) !important;
       box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35) !important;
@@ -437,6 +464,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-wa:hover {
       transform: translateY(-3px);
       box-shadow: 0 14px 36px rgba(37, 211, 102, 0.3)
+    }
+
+    .btn-call {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 34px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-call:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(201, 168, 76, 0.25);
     }
 
     .btn-outline {
@@ -3456,10 +3507,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <body>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNWCJS84"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNWCJS84" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- NAVBAR -->
   <nav id="navbar">
@@ -3573,10 +3624,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="hero-desc">A sanctuary where ancient yoga wisdom, therapeutic healing, and creative movement converge.
           Transforming bodies, minds, and spirits for over 20 years.</p>
         <div class="hero-cta">
+
           <a class="btn-wa"
             href="https://wa.me/919891525854?text=Hi%2C%20I%20want%20to%20book%20my%20first%20class%20at%20Sutra%20Studios!"
-            target="_blank">💬 WhatsApp to Book Your Class</a>
-          <button class="btn-outline" onclick="navTo('services')">Explore Services</button>
+            target="_blank">
+            💬 WhatsApp to Book Your Class
+          </a>
+
+          <a class="btn-call" href="tel:+919891525854">
+            📞 Call to Book Your Class
+          </a>
+
+          <button class="btn-outline" onclick="navTo('services')">
+            Explore Services
+          </button>
+
         </div>
         <div class="hero-trust">
           <div class="trust-item"><span class="trust-num">1200+</span><span class="trust-label">Students
@@ -4034,11 +4096,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>No experience needed. No judgement. Just you, your breath, and the beginning of something beautiful.
             Message us on WhatsApp — we'll match you to the perfect class and studio.</p>
           <div class="cta-actions">
+
             <a class="btn-wa"
               href="https://wa.me/919891525854?text=Hi%2C%20I%20want%20to%20book%20my%20First%20class%20at%20Sutra%20Studios!"
-              target="_blank">💬 WhatsApp — Book Your First Class</a>
-            <button class="btn-outline" onclick="showPage('sector17')">📍 Sector 17 Studio</button>
-            <button class="btn-outline" onclick="showPage('sector21')">📍 Sector 21A Studio</button>
+              target="_blank">
+              💬 WhatsApp — Book Your First Class
+            </a>
+
+            <a class="btn-call" href="tel:+919891525854">
+              📞 Call to Book Your First Class
+            </a>
+
+            <button class="btn-outline" onclick="showPage('sector17')">
+              📍 Sector 17 Studio
+            </button>
+
+            <button class="btn-outline" onclick="showPage('sector21')">
+              📍 Sector 21A Studio
+            </button>
+
           </div>
           <p class="cta-note">🎁 Your first class is calling you · No commitment · We respond within 1 hour on WhatsApp
           </p>
@@ -4145,11 +4221,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1>Classical Yoga<br>for the <em>Modern Soul</em></h1>
         <p class="sp-hero-lead">Hatha, Aerial Contemporary Dance, Ashtanga, Yin, Prenatal, Power Yoga — authentic
           practices taught with precision and warmth. From complete beginners to seasoned practitioners.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa"
-            href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20join%20a%20Yoga%20class!"
-            target="_blank">💬 Book a Trial Class Today!</a><button class="btn-outline"
-            onclick="goBackHome('services')">← Back to
-            Home</button></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+
+  <a class="btn-wa"
+    href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20a%20class%20at%20the%20Garden%20Studio%20Sector%2021A!"
+    target="_blank"
+    style="background:linear-gradient(135deg,var(--teal),#1a6b62)">
+    💬 Book Your Class Here
+  </a>
+
+  <a class="btn-call"
+    href="tel:+919891525854">
+    📞 Call to Book Your Class
+  </a>
+
+  <button class="btn-outline" onclick="goBackHome('studios')">
+    ← Back to Home
+  </button>
+
+</div>
       </div>
     </div>
     <div class="sp-gallery" style="background:var(--black)">
@@ -4370,11 +4460,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1>Still the Mind.<br><em>Find</em> Yourself.</h1>
         <p class="sp-hero-lead">Guided meditation, pranayama breathwork, yoga nidra and mindfulness practices. A
           dedicated space to calm the nervous system, restore mental clarity, and access deep inner stillness.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn-wa"
-            href="https://wa.me/919891525854?text=Hi%2C%20I%27m%20interested%20in%20Meditation%20classes%20at%20Sutra%20Studios!"
-            target="_blank">💬 Book a Trial Class Today!</a><button class="btn-outline"
-            onclick="goBackHome('services')">← Back to
-            Home</button></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+
+  <a class="btn-wa"
+    href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20a%20class%20at%20the%20Garden%20Studio%20Sector%2021A!"
+    target="_blank"
+    style="background:linear-gradient(135deg,var(--teal),#1a6b62)">
+    💬 Book Your Class Here
+  </a>
+
+  <a class="btn-call"
+    href="tel:+919891525854">
+    📞 Call to Book Your Class
+  </a>
+
+  <button class="btn-outline" onclick="goBackHome('studios')">
+    ← Back to Home
+  </button>
+
+</div>
       </div>
     </div>
     <div class="sp-gallery" style="background:var(--black)">
@@ -5357,10 +5461,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Our flagship studio — a 2,000 sq ft haven of serenity, crafted to elevate every aspect of your practice. Led
           personally by Master Instructor Himani.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
+
           <a class="btn-wa"
             href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20a%20class%20at%20the%20Sector%2017%20Studio!"
-            target="_blank">💬 Book a Class Here</a>
-          <button class="btn-outline" onclick="goBackHome('studios')">← Back to Home</button>
+            target="_blank">
+            💬 Book a Class Here
+          </a>
+
+          <a class="btn-call" href="tel:+919891525854">
+            📞 Call to Book Your Class
+          </a>
+
+          <button class="btn-outline" onclick="goBackHome('studios')">
+            ← Back to Home
+          </button>
+
         </div>
       </div>
     </div>
@@ -6308,11 +6423,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="std-book-bar">
       <div class="section-eyebrow" style="justify-content:center">Join Us</div>
+
       <h2>Begin at <em>Yoga Sutra Studio</em></h2>
+
       <p>Your first class is calling you — no commitment, no pressure.</p>
-      <a class="btn-wa"
-        href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20a%20class%20at%20Yoga%20Sutra%20Studio%20Sector%2017!"
-        target="_blank">💬 WhatsApp to Book Your Class</a>
+
+      <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+
+        <a class="btn-wa"
+          href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20a%20class%20at%20Yoga%20Sutra%20Studio%20Sector%2017!"
+          target="_blank">
+          💬 WhatsApp to Book Your Class
+        </a>
+
+        <a class="btn-call" href="tel:+919891525854">
+          📞 Call to Book Your Class
+        </a>
+
+      </div>
+
     </div>
     <div class="page-footer-nav"><button onclick="goBackHome('studios')">← Back to Homepage</button></div>
   </div>
@@ -6840,10 +6969,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="section-eyebrow" style="justify-content:center">Join Us</div>
       <h2>Begin at <em>Sector 21A</em></h2>
       <p>Your first class is calling you — no commitment, no pressure.</p>
-      <a class="btn-wa"
-        href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20class%20at%20the%20Garden%20Studio%20Sector%2021A!"
-        target="_blank" style="background:linear-gradient(135deg,var(--teal),#1a6b62)">💬 WhatsApp to Book your first
-        Class</a>
+
+      <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+
+        <a class="btn-wa"
+          href="https://wa.me/919891525854?text=Hi%2C%20I%27d%20like%20to%20book%20a%20class%20at%20the%20Garden%20Studio%20Sector%2021A!"
+          target="_blank">
+          💬 WhatsApp to Book your first Class
+        </a>
+
+        <a class="btn-call" href="tel:+919891525854">
+          📞 Call to Book Your Class
+        </a>
+
+      </div>
     </div>
     <div class="page-footer-nav"><button onclick="goBackHome('studios')">← Back to Homepage</button></div>
   </div>
